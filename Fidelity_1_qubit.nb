@@ -1,0 +1,2992 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[    111592,       2991]
+NotebookOptionsPosition[    107890,       2927]
+NotebookOutlinePosition[    108313,       2944]
+CellTagsIndexPosition[    108270,       2941]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\[IndentingNewLine]", "Chapter"], 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"1", " ", "qubit"}], ";"}], "Chapter"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"We", " ", 
+         RowBox[{"evaluate", ":"}]}], " ", ";"}], "\[IndentingNewLine]", 
+       "   ", "|", 
+       RowBox[{"0", ">", "<", "0"}], "|"}], " ", "->", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"p_", 
+         RowBox[{"{", "1", "}"}]}], " ", "|", 
+        RowBox[{"0", ">", "<", 
+         RowBox[{
+          RowBox[{"0", "\\", "  ", 
+           RowBox[{"+", " ", "p_"}]}], 
+          RowBox[{"{", "2", "}"}]}]}], " ", "|", 
+        RowBox[{"1", ">", "<", "1"}], "|", "  ", 
+        RowBox[{
+         RowBox[{"+", " ", "p_"}], 
+         RowBox[{"{", "3", "}"}]}], " ", "|", 
+        RowBox[{"x", ">", "<", 
+         RowBox[{
+          RowBox[{"x", "\\", " ", 
+           RowBox[{"+", " ", "p_"}]}], 
+          RowBox[{"{", "4", "}"}]}]}], "|", 
+        RowBox[{"y", ">", "<", "y"}], "|", " ", "\[IndentingNewLine]", "  ", 
+        "|", 
+        RowBox[{"1", ">", "<", "1"}], "|"}], " ", "->", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"p_", 
+          RowBox[{"{", "5", "}"}]}], " ", "|", 
+         RowBox[{"0", ">", "<", 
+          RowBox[{
+           RowBox[{"0", "\\", "  ", 
+            RowBox[{"+", " ", "p_"}]}], 
+           RowBox[{"{", "6", "}"}]}]}], " ", "|", 
+         RowBox[{"1", ">", "<", "1"}], "|", "  ", 
+         RowBox[{
+          RowBox[{"+", " ", "p_"}], 
+          RowBox[{"{", "7", "}"}]}], " ", "|", 
+         RowBox[{"x", ">", "<", 
+          RowBox[{
+           RowBox[{"x", "\\", " ", 
+            RowBox[{"+", " ", "p_"}]}], 
+           RowBox[{"{", "8", "}"}]}]}], "|", 
+         RowBox[{"y", ">", "<", "y"}], "|", "\[IndentingNewLine]", " ", "|", 
+         RowBox[{"x", ">", "<", "x"}], "|"}], " ", "->", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"p_", 
+           RowBox[{"{", "9", "}"}]}], " ", "|", 
+          RowBox[{"0", ">", "<", 
+           RowBox[{
+            RowBox[{"0", "\\", "  ", 
+             RowBox[{"+", " ", "p_"}]}], 
+            RowBox[{"{", "10", "}"}]}]}], "|", 
+          RowBox[{"1", ">", "<", "1"}], "|", "  ", 
+          RowBox[{
+           RowBox[{"+", " ", "p_"}], 
+           RowBox[{"{", "11", "}"}]}], "|", 
+          RowBox[{"x", ">", "<", 
+           RowBox[{
+            RowBox[{"x", "\\", " ", 
+             RowBox[{"+", " ", "p_"}]}], 
+            RowBox[{"{", "12", "}"}]}]}], "|", 
+          RowBox[{"y", ">", "<", "y"}], "|", "\[IndentingNewLine]", "|", 
+          RowBox[{"y", ">", "<", "y"}], "|"}], " ", "->", " ", 
+         RowBox[{
+          RowBox[{"p_", 
+           RowBox[{"{", "13", "}"}]}], "|", 
+          RowBox[{"0", ">", "<", 
+           RowBox[{
+            RowBox[{"0", "\\", "  ", 
+             RowBox[{"+", " ", "p_"}]}], 
+            RowBox[{"{", "14", "}"}]}]}], "|", 
+          RowBox[{"1", ">", "<", "1"}], "|", "  ", 
+          RowBox[{
+           RowBox[{"+", " ", "p_"}], 
+           RowBox[{"{", "15", "}"}]}], "|", 
+          RowBox[{"x", ">", "<", 
+           RowBox[{
+            RowBox[{"x", "\\", " ", 
+             RowBox[{"+", " ", "p_"}]}], 
+            RowBox[{"{", "16", "}"}]}]}], "|", 
+          RowBox[{"y", ">", "<", "y"}], "|"}]}]}]}]}], "\[IndentingNewLine]", 
+     "*)"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"We", " ", "can", " ", "also", " ", "parametrise", " ", 
+          RowBox[{"as", ":"}]}], " ", ";"}], "\[IndentingNewLine]", "   ", 
+        "|", 
+        RowBox[{"0", ">", "<", "0"}], "|"}], " ", "->", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"p_", 
+          RowBox[{"{", "0", "}"}]}], " ", "|", 
+         RowBox[{"0", ">", "<", 
+          RowBox[{
+           RowBox[{"0", "\\", "  ", 
+            RowBox[{"+", " ", "p_"}]}], 
+           RowBox[{"{", "1", "}"}]}]}], "|", 
+         RowBox[{"1", ">", "<", "1"}], "|", "  ", 
+         RowBox[{
+          RowBox[{"+", " ", "p_"}], 
+          RowBox[{"{", "2", "}"}]}], " ", "|", 
+         RowBox[{"x", ">", "<", 
+          RowBox[{
+           RowBox[{"x", "\\", "   ", 
+            RowBox[{"+", " ", "p_"}]}], 
+           RowBox[{"{", "3", "}"}]}]}], "|", 
+         RowBox[{"y", ">", "<", "y"}], "|", " ", "\[IndentingNewLine]", "  ", 
+         "|", 
+         RowBox[{"1", ">", "<", "1"}], "|"}], " ", "->", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"p_", 
+           RowBox[{"{", "4", "}"}]}], " ", "|", 
+          RowBox[{"0", ">", "<", 
+           RowBox[{
+            RowBox[{"0", "\\", "  ", 
+             RowBox[{"+", " ", "p_"}]}], 
+            RowBox[{"{", "0", "}"}]}]}], "|", 
+          RowBox[{"1", ">", "<", "1"}], "|", "  ", 
+          RowBox[{
+           RowBox[{"+", " ", "p_"}], 
+           RowBox[{"{", "5", "}"}]}], " ", "|", 
+          RowBox[{"x", ">", "<", 
+           RowBox[{
+            RowBox[{"x", "\\", "   ", 
+             RowBox[{"+", " ", "p_"}]}], 
+            RowBox[{"{", "6", "}"}]}]}], "|", 
+          RowBox[{"y", ">", "<", "y"}], "|", "\[IndentingNewLine]", " ", "|", 
+          
+          RowBox[{"x", ">", "<", "x"}], "|"}], " ", "->", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"p_", 
+            RowBox[{"{", "7", "}"}]}], " ", "|", 
+           RowBox[{"0", ">", "<", 
+            RowBox[{
+             RowBox[{"0", "\\", "  ", 
+              RowBox[{"+", " ", "p_"}]}], 
+             RowBox[{"{", "8", "}"}]}]}], "|", 
+           RowBox[{"1", ">", "<", "1"}], "|", "  ", 
+           RowBox[{
+            RowBox[{"+", " ", "p_"}], 
+            RowBox[{"{", "0", "}"}]}], " ", "|", 
+           RowBox[{"x", ">", "<", 
+            RowBox[{
+             RowBox[{"x", "\\", "   ", 
+              RowBox[{"+", " ", "p_"}]}], 
+             RowBox[{"{", "9", "}"}]}]}], "|", 
+           RowBox[{"y", ">", "<", "y"}], "|", "\[IndentingNewLine]", "|", 
+           RowBox[{"y", ">", "<", "y"}], "|"}], " ", "->", " ", 
+          RowBox[{
+           RowBox[{"p_", 
+            RowBox[{"{", "10", "}"}]}], "|", 
+           RowBox[{"0", ">", "<", 
+            RowBox[{
+             RowBox[{"0", "\\", "  ", 
+              RowBox[{"+", " ", "p_"}]}], 
+             RowBox[{"{", "11", "}"}]}]}], "|", 
+           RowBox[{"1", ">", "<", "1"}], "|", " ", 
+           RowBox[{
+            RowBox[{"+", " ", "p_"}], 
+            RowBox[{"{", "12", "}"}]}], "|", 
+           RowBox[{"x", ">", "<", 
+            RowBox[{
+             RowBox[{"x", "\\", "   ", 
+              RowBox[{"+", " ", "p_"}]}], 
+             RowBox[{"{", "0", "}"}]}]}], "|", 
+           RowBox[{"y", ">", "<", "y"}], "|", "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+           "This", " ", "is", " ", "the", " ", "best", " ", "one", " ", "to", 
+            " ", "use", " ", "because", " ", "in", " ", "this", " ", "way", 
+            " ", "we", " ", "are", " ", "measuring", " ", "wrt", " ", "the", 
+            " ", "probability", " ", "of", " ", "QPT", " ", "being", " ", 
+            "performed", " ", 
+            RowBox[{
+            "perfectly", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             "The"}], " ", "ways", " ", "we", " ", "are", " ", "giving", " ", 
+            "values", " ", "to", " ", "these", " ", "probabilities", " ", 
+            "is", " ", "like", " ", "this", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", "   ", "p1"}]}]}]}]}]}], "=", 
+      RowBox[{
+       RowBox[{"random", " ", "val", " ", "1"}], "      ", "=", 
+       RowBox[{"p4", "=", 
+        RowBox[{"p7", "=", 
+         RowBox[{
+          RowBox[{"p10", "\[IndentingNewLine]", "    ", "p2"}], "=", 
+          RowBox[{
+           RowBox[{"random", " ", "val", " ", "2"}], "      ", "=", 
+           RowBox[{"p5", "=", 
+            RowBox[{"p8", "=", 
+             RowBox[{
+              RowBox[{"p1", "\[IndentingNewLine]", "p3"}], "=", 
+              RowBox[{
+               RowBox[{"random", " ", "val", " ", "3"}], "      ", "=", 
+               RowBox[{"p6", "=", 
+                RowBox[{"p9", "=", "p12"}]}]}]}]}]}]}]}]}]}]}]}], 
+     "\[IndentingNewLine]", "*)"}], "Code"], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{"Clear", "[", "\"\<`*\>\"", "]"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"PM", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"1", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1"}], "}"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "0"}], "}"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "I"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"I", ",", "0"}], "}"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"1", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], "}"}]}], ";"}], "Input"], 
+   
+   StyleBox["\[IndentingNewLine]", "Input"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"Id", "=", 
+      RowBox[{"PM", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+     RowBox[{"X", "=", 
+      RowBox[{"PM", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ";", 
+     RowBox[{"Y", "=", 
+      RowBox[{"PM", "[", 
+       RowBox[{"[", "3", "]"}], "]"}]}], ";", 
+     RowBox[{"Z", "=", 
+      RowBox[{"PM", "[", 
+       RowBox[{"[", "4", "]"}], "]"}]}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      StyleBox["Sideal", "Input"], 
+      StyleBox["=", "Input"], 
+      StyleBox[
+       RowBox[{
+        StyleBox["{", "Input"], 
+        StyleBox[
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"1", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0"}], "}"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}]}], "}"}], ",", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "I"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "I"}], ",", "1"}], "}"}]}], "}"}], "/", "2"}], 
+          ",", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "1"}], "}"}]}], "}"}], "/", "2"}]}], "Code"], 
+        
+        StyleBox["}", "Code"]}], "Code"]}], 
+     StyleBox[";", "Code"]}], "Code"], 
+   StyleBox[" ", "Code"], 
+   StyleBox["\n", "Input"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      StyleBox["Pideal", "Input"], 
+      StyleBox["=", "Input"], 
+      RowBox[{
+       StyleBox["{", "Input"], 
+       StyleBox[
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1"}], "}"}]}], "}"}], ",", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"1", ",", "I"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "I"}], ",", "1"}], "}"}]}], "}"}], "/", "2"}], ",", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"1", ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "1"}], "}"}]}], "}"}], "/", "2"}]}], "Code"], 
+       StyleBox["}", "Code"]}]}], 
+     StyleBox[";", "Code"]}], "Code"], 
+   StyleBox[" ", "Code"], 
+   StyleBox["\n", "Code"], 
+   StyleBox["\n", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"T", "=", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Id", ".", "rho", ".", "Id"}], ",", 
+         RowBox[{"Id", ".", "rho", ".", "X"}], ",", " ", 
+         RowBox[{"Id", ".", "rho", ".", "Y"}], ",", " ", 
+         RowBox[{"Id", ".", "rho", ".", "Z"}], ",", " ", 
+         RowBox[{"X", ".", "rho", ".", "Id"}], ",", 
+         RowBox[{"X", ".", "rho", ".", "X"}], ",", " ", 
+         RowBox[{"X", ".", "rho", ".", "Y"}], ",", " ", 
+         RowBox[{"X", ".", "rho", ".", "Z"}], ",", " ", 
+         RowBox[{"Y", ".", "rho", ".", "Id"}], ",", 
+         RowBox[{"Y", ".", "rho", ".", "X"}], ",", " ", 
+         RowBox[{"Y", ".", "rho", ".", "Y"}], ",", " ", 
+         RowBox[{"Y", ".", "rho", ".", "Z"}], ",", " ", 
+         RowBox[{"Z", ".", "rho", ".", "Id"}], ",", 
+         RowBox[{"Z", ".", "rho", ".", "X"}], ",", " ", 
+         RowBox[{"Z", ".", "rho", ".", "Y"}], ",", " ", 
+         RowBox[{"Z", ".", "rho", ".", "Z"}]}], "}"}], "}"}]}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"T2", "=", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{
+        "Id1", ",", "Id2", ",", " ", "Id3", ",", " ", "Id4", ",", " ", "X1", 
+         ",", "X2", ",", " ", "X3", ",", " ", "X4", ",", " ", "Y1", ",", "Y2",
+          ",", " ", "Y3", ",", " ", "Y4", ",", " ", "Z1", ",", "Z2", ",", " ",
+          "Z3", ",", " ", "Z4"}], "}"}], "}"}]}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"CalculateAInverse", "[", 
+      RowBox[{"RP_", ",", " ", "RS_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "AM", ",", "AI"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"A", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Tr", "[", 
+            RowBox[{
+             RowBox[{"RP", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ".", 
+             RowBox[{"PM", "[", 
+              RowBox[{"[", "p", "]"}], "]"}], ".", 
+             RowBox[{"RS", "[", 
+              RowBox[{"[", "j", "]"}], "]"}], ".", 
+             RowBox[{"PM", "[", 
+              RowBox[{"[", "q", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", "4"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"j", ",", "1", ",", "4"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"p", ",", "1", ",", "4"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"q", ",", "1", ",", "4"}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"AM", "=", 
+         RowBox[{"Partition", "[", 
+          RowBox[{
+           RowBox[{"Flatten", "[", "A", "]"}], ",", 
+           RowBox[{"{", "16", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"AI", "=", 
+         RowBox[{"Inverse", "[", "AM", "]"}]}], ";", "\[IndentingNewLine]", 
+        "AI"}]}], "]"}]}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"CalculateP", "[", 
+      RowBox[{"WP_", ",", "WS_", ",", "Gate_", ",", "Gate2_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "pvertical", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"pvertical", " ", "=", 
+         RowBox[{"ArrayFlatten", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"Tr", "[", 
+               RowBox[{
+                RowBox[{"WP", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ".", "Gate", ".", 
+                RowBox[{"WS", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], ".", "Gate2"}], "]"}], "}"}],
+              ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", "4"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", "1", ",", "4"}], "}"}]}], "]"}], ",", "1"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", "pvertical"}]}], "]"}]}], 
+    "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"CalculateChi", "[", 
+      RowBox[{"WP_", ",", "WS_", ",", "AI_", ",", "Gate_", ",", "Gate2_"}], 
+      "]"}], ":=", " ", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"p", ",", "Chi"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"p", "=", 
+         RowBox[{"CalculateP", "[", 
+          RowBox[{"WP", ",", "WS", ",", "Gate", ",", "Gate2"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Chi", " ", "=", " ", 
+         RowBox[{"AI", ".", "p"}]}], ";", "\[IndentingNewLine]", "Chi"}]}], 
+      "]"}]}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"ReconstructGate", "[", 
+       RowBox[{"Chi_", ",", "T_"}], "]"}], ":=", "\[IndentingNewLine]", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Chi", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "1"}], "]"}], "]"}], 
+         RowBox[{"T", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "i"}], "]"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "16"}], "}"}]}], "]"}]}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{"(*", 
+     RowBox[{
+     "Fidelity", " ", "calculated", " ", "by", " ", "comparing", " ", "Chi", 
+      " ", "vs", " ", "the", " ", "Reconstructed", " ", "Chi"}], "*)"}], 
+    "Input"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"FChi", "[", 
+       RowBox[{"Chiid_", ",", " ", "Chirec_"}], "]"}], ":=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Numerator", ",", " ", "Denominator"}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Numerator", "=", 
+          RowBox[{"Tr", "[", 
+           RowBox[{"Chirec", ".", 
+            RowBox[{"ConjugateTranspose", "[", "Chiid", "]"}]}], "]"}]}], ";",
+          "\[IndentingNewLine]", 
+         RowBox[{"Denominator", "=", 
+          RowBox[{"(", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{
+             RowBox[{"Tr", "[", 
+              RowBox[{
+               RowBox[{"(", "Chirec", ")"}], ".", 
+               RowBox[{"ConjugateTranspose", "[", "Chirec", "]"}]}], "]"}], 
+             RowBox[{"Tr", "[", 
+              RowBox[{
+               RowBox[{"(", "Chiid", ")"}], ".", 
+               RowBox[{"ConjugateTranspose", "[", "Chiid", "]"}]}], "]"}]}], 
+            "]"}], ")"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Numerator", "/", "Denominator"}]}]}], "]"}]}], ";"}], 
+    "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"CalculateFChi", "[", 
+      RowBox[{
+      "Projectors_", ",", "States_", ",", "AI_", ",", "Gate_", ",", 
+       "Gate2_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"Chi", ",", "RecGate", ",", "FidelityChi", ",", "idealChi"}], 
+        "}"}], ",", "\n", 
+       RowBox[{
+        RowBox[{"Chi", "=", 
+         RowBox[{"CalculateChi", "[", 
+          RowBox[{
+          "Projectors", ",", "States", ",", "AI", ",", "Gate", ",", "Gate2"}],
+           "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"idealChi", "=", 
+         RowBox[{"CalculateChi", "[", 
+          RowBox[{
+          "Pideal", ",", "Sideal", ",", "AI", ",", "Gate", ",", "Gate2"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"FidelityChi", "=", 
+         RowBox[{"FChi", "[", 
+          RowBox[{"idealChi", ",", "Chi"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Simplify", "[", "FidelityChi", "]"}]}]}], "]"}]}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"AI", "=", " ", 
+      RowBox[{"CalculateAInverse", "[", 
+       RowBox[{"Pideal", ",", "Sideal"}], "]"}]}], ";"}], "Code"], 
+   StyleBox["\n", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"ChiIdeal", "=", 
+      RowBox[{"CalculateChi", "[", 
+       RowBox[{"Pideal", ",", "Sideal", ",", "AI", ",", "X", ",", "Id"}], 
+       "]"}]}], ";"}], "Code"], 
+   StyleBox["\n", "Code"], 
+   StyleBox["\n", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"FindASetOfProbabilitiesAndFidelity", "[", 
+       RowBox[{"Gate_", ",", "Gate2_", ",", "Number_"}], "]"}], ":=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "probabilitySet", ",", "probPermutations", ",", "probFidelity", ",", 
+          "eq", ",", "variable", ",", "chi"}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          StyleBox["probabilitySet", "Code"], 
+          StyleBox["=", "Code"], 
+          RowBox[{
+           StyleBox["N", "Code"], 
+           StyleBox["[", "Code"], 
+           RowBox[{
+            RowBox[{"IntegerPartitions", "[", 
+             RowBox[{"10", ",", 
+              RowBox[{"{", "4", "}"}]}], "]"}], "*", 
+            RowBox[{"10", "^", 
+             RowBox[{"(", 
+              RowBox[{"-", "1"}], ")"}]}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"probPermutations", "=", 
+          RowBox[{"{", "}"}]}], ";", 
+         RowBox[{"probFidelity", "=", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Do", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"probPermutations", ",", 
+              RowBox[{"Permutations", "[", "i", "]"}]}], "]"}], ";"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", 
+             StyleBox["probabilitySet", "Code"]}], "}"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"probPermutations", "=", 
+          RowBox[{"Flatten", "[", 
+           RowBox[{"probPermutations", ",", "1"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"variable", "=", 
+          RowBox[{"T2", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "Number"}], "]"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Do", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"probability0", "=", 
+             RowBox[{"i", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+            RowBox[{"probability1", "=", 
+             RowBox[{"i", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ";", 
+            RowBox[{"probability2", "=", 
+             RowBox[{"i", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ";", 
+            RowBox[{"probability3", "=", 
+             RowBox[{"i", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"chi", "=", 
+             RowBox[{"CalculateChi", "[", 
+              RowBox[{"Pideal", ",", 
+               StyleBox["StatesE", "Code"], 
+               StyleBox[",", "Code"], 
+               StyleBox["AI", "Code"], ",", "Gate", ",", "Gate2"}], "]"}]}], 
+            ";", "\[IndentingNewLine]", 
+            RowBox[{"eq", "=", 
+             RowBox[{"ReconstructGate", "[", 
+              RowBox[{"chi", ",", "T2"}], "]"}]}], ";", "\n", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"i", ",", 
+              RowBox[{"N", "[", 
+               RowBox[{"CalculateFChi", "[", 
+                RowBox[{"Pideal", ",", 
+                 StyleBox["StatesE", "Code"], 
+                 StyleBox[",", "Code"], 
+                 StyleBox["AI", "Code"], ",", "Gate", ",", "Gate2"}], "]"}], 
+               "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"i", ",", 
+              RowBox[{"Coefficient", "[", 
+               RowBox[{"eq", ",", "variable"}], "]"}]}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"probFidelity", ",", "i"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "probPermutations"}], "}"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", "probFidelity"}]}], "]"}]}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"States", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"probability0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "probability0"}], "}"}]}], "}"}], ",", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"probability0", ",", 
+             RowBox[{"I", "*", "probability0"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "I"}], "*", "probability0"}], ",", 
+             "probability0"}], "}"}]}], "}"}], "/", "2"}], ",", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"probability0", ",", "probability0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"probability0", ",", "probability0"}], "}"}]}], "}"}], 
+         "/", "2"}]}], "}"}]}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"Error", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "probability1"}], "}"}]}], "}"}], "+", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"probability2", ",", 
+              RowBox[{"I", "*", "probability2"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "I"}], "*", "probability2"}], ",", 
+              "probability2"}], "}"}]}], "}"}], "/", "2"}], "+", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"probability3", ",", "probability3"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"probability3", ",", "probability3"}], "}"}]}], "}"}], 
+          "/", "2"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"probability4", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "}"}], "+", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"probability5", ",", 
+              RowBox[{"I", "*", "probability5"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "I"}], "*", "probability5"}], ",", 
+              "probability5"}], "}"}]}], "}"}], "/", "2"}], "+", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"probability6", ",", "probability6"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"probability6", ",", "probability6"}], "}"}]}], "}"}], 
+          "/", "2"}]}], ",", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"probability7", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "}"}], "+", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "probability8"}], "}"}]}], "}"}], "+", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"probability9", ",", "probability9"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"probability9", ",", "probability9"}], "}"}]}], "}"}], 
+          "/", "2"}]}], ",", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"probability10", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "}"}], "+", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "probability11"}], "}"}]}], "}"}], "+", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"probability12", ",", 
+              RowBox[{"I", "*", "probability12"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "I"}], "*", "probability12"}], ",", 
+              "probability12"}], "}"}]}], "}"}], "/", "2"}]}]}], "}"}]}], 
+     ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability4", "=", "probability1"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability7", "=", "probability1"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability10", "=", "probability1"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability5", "=", "probability2"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability8", "=", "probability2"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability11", "=", "probability2"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability6", "=", "probability3"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability9", "=", "probability3"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"probability12", "=", "probability3"}], ";"}], "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox["\[IndentingNewLine]", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"StatesE", "=", 
+      RowBox[{"States", "+", "Error"}]}], ";"}], "Code"], 
+   StyleBox["\n", "Code"], 
+   StyleBox["\n", "Code"], 
+   RowBox[{
+    RowBox[{
+     StyleBox[
+      RowBox[{"RePlotResults", "[", 
+       RowBox[{
+       "ProbabilitiesFidelities_", ",", "featureNumber_", ",", "String_"}], 
+       "]"}], "Code"], 
+     StyleBox[":=", "Code"], 
+     RowBox[{
+      StyleBox["Module", "Code"], 
+      StyleBox["[", "Code"], 
+      RowBox[{
+       StyleBox[
+        RowBox[{"{", "Plot", "}"}], "Code"], 
+       StyleBox[",", "Code"], 
+       RowBox[{
+        RowBox[{
+         StyleBox["Plot", "Code"], "=", 
+         RowBox[{"ListPlot", "[", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ProbabilitiesFidelities", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+              RowBox[{"Re", "[", 
+               RowBox[{"ProbabilitiesFidelities", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "featureNumber"}], "]"}], "]"}], "]"}]}], 
+             "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], 
+             "}"}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Show", "[", 
+         RowBox[{"Plot", ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"HoldForm", "[", 
+              RowBox[{
+              "Probability", " ", "of", " ", "correct", " ", "input"}], "]"}],
+              ",", 
+             RowBox[{"HoldForm", "[", 
+              RowBox[{"Re", "[", "String", "]"}], "]"}]}], "}"}]}], ",", 
+          RowBox[{"PlotLabel", "\[Rule]", 
+           RowBox[{"HoldForm", "[", 
+            RowBox[{"Distribution", " ", "of", " ", 
+             RowBox[{"Re", "[", "String", "]"}]}], "]"}]}], ",", 
+          RowBox[{"LabelStyle", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"GrayLevel", "[", "0", "]"}], "}"}]}]}], "]"}]}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      StyleBox[
+       RowBox[{"Im", 
+        StyleBox["PlotResults", "Code"]}]], 
+      StyleBox["[", "Code"], 
+      StyleBox[
+       RowBox[{
+       "ProbabilitiesFidelities_", ",", "featureNumber_", ",", "String_"}], 
+       "Code"], 
+      StyleBox["]", "Code"]}], 
+     StyleBox[":=", "Code"], 
+     RowBox[{
+      StyleBox["Module", "Code"], 
+      StyleBox["[", "Code"], 
+      RowBox[{
+       StyleBox[
+        RowBox[{"{", "Plot", "}"}], "Code"], 
+       StyleBox[",", "Code"], 
+       RowBox[{
+        RowBox[{
+         StyleBox["Plot", "Code"], "=", 
+         RowBox[{"ListPlot", "[", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ProbabilitiesFidelities", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+              RowBox[{"Im", "[", 
+               RowBox[{"ProbabilitiesFidelities", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "featureNumber"}], "]"}], "]"}], "]"}]}], 
+             "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], 
+             "}"}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Show", "[", 
+         RowBox[{"Plot", ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"HoldForm", "[", 
+              RowBox[{
+              "Probability", " ", "of", " ", "correct", " ", "input"}], "]"}],
+              ",", 
+             RowBox[{"HoldForm", "[", 
+              RowBox[{"Im", "[", "String", "]"}], "]"}]}], "}"}]}], ",", 
+          RowBox[{"PlotLabel", "\[Rule]", 
+           RowBox[{"HoldForm", "[", 
+            RowBox[{"Distribution", " ", "of", " ", 
+             RowBox[{"Im", "[", "String", "]"}]}], "]"}]}], ",", 
+          RowBox[{"LabelStyle", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"GrayLevel", "[", "0", "]"}], "}"}]}]}], "]"}]}]}], 
+      "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.841668646503834*^9, {3.841668678474969*^9, 3.841668682323873*^9}, {
+   3.8416689187974586`*^9, 3.84166891913008*^9}, {3.8416689951739597`*^9, 
+   3.8416689958347197`*^9}, {3.84166912224158*^9, 3.8416691323277283`*^9}, {
+   3.841669940880001*^9, 3.841669942847558*^9}, {3.841670293952938*^9, 
+   3.8416704134592237`*^9}, {3.8416706031955976`*^9, 
+   3.8416706979630833`*^9}, {3.841671403090642*^9, 3.841671410644212*^9}, {
+   3.84167176361714*^9, 3.841671863588378*^9}, {3.841683644991548*^9, 
+   3.8416836452956*^9}, {3.841686926038979*^9, 3.8416869281560907`*^9}, {
+   3.841687051185*^9, 3.841687163924488*^9}, {3.841687207590802*^9, 
+   3.841687323404387*^9}, {3.841687367952153*^9, 3.841687576092824*^9}, {
+   3.841687624804771*^9, 3.841687636469943*^9}, 3.841687740021076*^9},
+ CellLabel->
+  "In[2165]:=",ExpressionUUID->"5bd1219e-9eb4-4f6c-8f29-e1b2184b2078"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\n", "Code"], 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"X", " ", "gates"}], ";"}], "Chapter"], 
+   StyleBox["\n", "Code"], 
+   StyleBox["\n", "Code"], 
+   RowBox[{"Clear", "[", "ProbabilitiesFidelities", "]"}], 
+   StyleBox["\[IndentingNewLine]", "Chapter"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"ProbabilitiesFidelities", "=", 
+      RowBox[{"FindASetOfProbabilitiesAndFidelity", "[", 
+       RowBox[{"X", ",", "Id", ",", "5"}], "]"}]}], ";"}], "Code"], 
+   "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ProbabilitiesFidelities", "=", 
+         RowBox[{"Delete", "[", 
+          RowBox[{"ProbabilitiesFidelities", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"i", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";"}], ",", 
+       
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], "}"}]}], 
+      "]"}], ";"}], "Code"], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SortBy", "[", 
+      StyleBox[
+       RowBox[{"ProbabilitiesFidelities", ",", "First"}], "Code"], 
+      StyleBox["]", "Code"]}], 
+     StyleBox["//", "Code"], "MatrixForm"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"RePlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"ImPlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"RePlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"ImPlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+    "]"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{
+  3.841668907287733*^9, {3.8416702224964943`*^9, 3.8416702227388563`*^9}, {
+   3.8416707313727627`*^9, 3.8416707415000267`*^9}, {3.8416708988294687`*^9, 
+   3.841670946855528*^9}, {3.8416710655684223`*^9, 3.841671073607338*^9}, {
+   3.841686922139656*^9, 3.841686965131504*^9}, {3.8416871680114117`*^9, 
+   3.841687185223434*^9}, 3.84168745424937*^9, 3.841687594581415*^9, {
+   3.841687677840021*^9, 3.841687718612381*^9}, 3.8416879029193*^9},
+ CellLabel->
+  "In[2196]:=",ExpressionUUID->"1f84763f-df3b-47fb-9f85-c4e2a8df88ec"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+zlAlcEWL56Zz9rJgjstG8o//Qkc9VBOF85
+/KWZ2529cH4o0xGmWr2D9sZg8Ng+0HzJ9EnFb+H820nLDDNkEPx1743E57i/
+heo/aW9elbsrcdFlOJ9v26M7AQ8vwPmT52ndPCxyGW5fOevz8oa/h+H8gL9B
+f2/+PATn3wlhW5PvhHDvT4XLOtWTEPJ32woNl507AOcv0rl/NOH+IXsGMHhg
+r3XMIGJ/9Ss4v1t5S49J6Us4316Hp2Cvwiuofy7b/1O4krnp+H043ybMd99/
+9TtwfpRl++P+j/fg9u1mfLdhRfVROD/2dnnDlHsI/5iCwwPBt0Djf0fzTxRU
+P8x9C71b3jdwv0b4p0nz7qRbCP+sXgUCr+DhW9A2fXuR7DU4vzD7zwo27qs4
+42di9frpXAuvwPmTUOLnpL3xB5vPf59dgbsvJBQEEP6d/CavzDUD4Z+F9Q/9
+ReqPQPk37Z0+M1WcPvUUzp8d+H/yP5kncH4Y2LyniPSHZv58sPojcD4j34MA
+swOH4fqPyscfidR9Duefta5Pm7fgGZzPbPVN73Exgs+CxhdaaZ++6vNTDHlY
+fBe1/Cj52PYQzm9abZH86toDOH9Kgr+mlBWCf2XJRk6xaQi+2sKqv50TEOnp
+rtWel4rbHsDDF+L+63A+JLwQ8VWIFp+S1zJ7zi5CyBuhxA+6/E6of47B+RD/
+IsJXGqwewZdA45eA0w+CvwMlvd+0n7Fhgdv0uOdw+yF8hH/4wfYh3HsaHD/X
+4OERL3nuw7k1iPDVUkl4ek4KwW+GhjfMfnaof2Dyb37+zclVeYTTvGU863mW
+XX4It799t13a3SMI92mV730tPPE6RnwAAHxEoMg=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageMargins->0.,
+  ImageSize->Automatic,
+  ImageSizeRaw->Automatic,
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {0, 0.9660917830792959}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.8416688967284184`*^9, 3.841668931859016*^9}, 
+   3.841669004640904*^9, 3.8416690867151814`*^9, 3.841669152272925*^9, 
+   3.8416693001177387`*^9, 3.841669361778236*^9, 3.8416694707998743`*^9, 
+   3.841669762132653*^9, {3.841670223483721*^9, 3.841670255716743*^9}, 
+   3.841670436935226*^9, 3.841670486425765*^9, 3.8416707688755503`*^9, {
+   3.841670924382194*^9, 3.841670949393736*^9}, 3.841671107999645*^9, 
+   3.8416712434172077`*^9, 3.8416714215587273`*^9, {3.841671694690281*^9, 
+   3.841671717705984*^9}, 3.8416719392984743`*^9, 3.841687012558864*^9, {
+   3.841687693020771*^9, 3.841687744406088*^9}, {3.8416879092057867`*^9, 
+   3.84168791269776*^9}},
+ CellLabel->
+  "Out[2201]=",ExpressionUUID->"0ef94aaa-5333-4f14-bd7f-aa8300d07fed"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYicEvvxb4aPXKoj3o8sZg8BiD
+v30515UwpwgbdHmI/pMY/AnJ0iJLJUttsMvvtL9y7MHUB38ibHC5T/AV+3Tu
+yaU45ae8OLvXnwlTHgIeYPC7lbf0mJRm2qDLQ/xzmWg+zD71Js27k25l4XQf
+Ib7RS/YfkubpGOEPc99C75b3DdzRGO5F58PClyejNvX8kmgc4U0pn1T/3SSR
+T7r5W5+XmW74EWODy/ymE5t/3RbIwSmPiw+L7/13PCRszWJtSE0fML53m3Xw
+Cd8sDP2w8N0Gdn8O2fFlo8NTsFchaw+58QVJX9k4068XxP0Y6RN7+GG6L2Qy
+P+PUgmwM/8HC49uVNc8iSnMJhi/28onU/Ep8+AIAhuWS9g==
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageMargins->0.,
+  ImageSize->Automatic,
+  ImageSizeRaw->Automatic,
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {-8.796653558995441*^-18, 1.8712805262645128`*^-17}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.8416688967284184`*^9, 3.841668931859016*^9}, 
+   3.841669004640904*^9, 3.8416690867151814`*^9, 3.841669152272925*^9, 
+   3.8416693001177387`*^9, 3.841669361778236*^9, 3.8416694707998743`*^9, 
+   3.841669762132653*^9, {3.841670223483721*^9, 3.841670255716743*^9}, 
+   3.841670436935226*^9, 3.841670486425765*^9, 3.8416707688755503`*^9, {
+   3.841670924382194*^9, 3.841670949393736*^9}, 3.841671107999645*^9, 
+   3.8416712434172077`*^9, 3.8416714215587273`*^9, {3.841671694690281*^9, 
+   3.841671717705984*^9}, 3.8416719392984743`*^9, 3.841687012558864*^9, {
+   3.841687693020771*^9, 3.841687744406088*^9}, {3.8416879092057867`*^9, 
+   3.841687912735672*^9}},
+ CellLabel->
+  "Out[2202]=",ExpressionUUID->"61606db1-9982-4410-8286-b4abad075aff"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+xh9KyZILDTfg6UhvFnoPFh8sZg8JhoGqL/
+JAY9G40/B4W/E4PG5R4YfwEOfejyDGDwgGga4o/LGLQJDnFi3UfIP7j4pLof
+V/jPJBAfM3Dow05j+gedRvXPTQx6Ng5xQvGJ3X5C5hGWx0XjSg9GBNIHujyu
+9ERceBOOrzl45XHHE7H5j1D4z0QJN8z0hu5eGJ/Y8EQNr53286A0Lv24zIPZ
+P51A+MJoACXch8A=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageMargins->0.,
+  ImageSize->Automatic,
+  ImageSizeRaw->Automatic,
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {0, 0.7}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.8416688967284184`*^9, 3.841668931859016*^9}, 
+   3.841669004640904*^9, 3.8416690867151814`*^9, 3.841669152272925*^9, 
+   3.8416693001177387`*^9, 3.841669361778236*^9, 3.8416694707998743`*^9, 
+   3.841669762132653*^9, {3.841670223483721*^9, 3.841670255716743*^9}, 
+   3.841670436935226*^9, 3.841670486425765*^9, 3.8416707688755503`*^9, {
+   3.841670924382194*^9, 3.841670949393736*^9}, 3.841671107999645*^9, 
+   3.8416712434172077`*^9, 3.8416714215587273`*^9, {3.841671694690281*^9, 
+   3.841671717705984*^9}, 3.8416719392984743`*^9, 3.841687012558864*^9, {
+   3.841687693020771*^9, 3.841687744406088*^9}, {3.8416879092057867`*^9, 
+   3.841687912776039*^9}},
+ CellLabel->
+  "Out[2203]=",ExpressionUUID->"3b5a2ea6-f094-4092-876d-6b24449276a2"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYiYNfsAdd3hgMHuPgB9igy0P0
+n8TBL7DBLr8Tbh4B95EsDwEPcPATbNDlIf65TDQf1b4EAu4jxE/ACH9U9wVg
+uBedjxq+ATjCm1I+qf67SSKfXPNh/sVlfgIBeUw+anzD0jvx6QOVn4ChHzV8
+EyiML1j6ITe+CKVfzPSJPfxwug/Df4TCB39+Ize/Eh++AGReU30=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageMargins->0.,
+  ImageSize->Automatic,
+  ImageSizeRaw->Automatic,
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {-5.204170427930421*^-18, 8.673617379884035*^-18}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.8416688967284184`*^9, 3.841668931859016*^9}, 
+   3.841669004640904*^9, 3.8416690867151814`*^9, 3.841669152272925*^9, 
+   3.8416693001177387`*^9, 3.841669361778236*^9, 3.8416694707998743`*^9, 
+   3.841669762132653*^9, {3.841670223483721*^9, 3.841670255716743*^9}, 
+   3.841670436935226*^9, 3.841670486425765*^9, 3.8416707688755503`*^9, {
+   3.841670924382194*^9, 3.841670949393736*^9}, 3.841671107999645*^9, 
+   3.8416712434172077`*^9, 3.8416714215587273`*^9, {3.841671694690281*^9, 
+   3.841671717705984*^9}, 3.8416719392984743`*^9, 3.841687012558864*^9, {
+   3.841687693020771*^9, 3.841687744406088*^9}, {3.8416879092057867`*^9, 
+   3.8416879128189096`*^9}},
+ CellLabel->
+  "Out[2204]=",ExpressionUUID->"6a272562-5a1d-48c0-9340-bf708ba66ea0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"X", ".", "rho", ".", "X"}], " ", "gate"}], ";"}], "Chapter"], 
+  "\n"}], "\n", 
+ RowBox[{"Clear", "[", "ProbabilitiesFidelities", 
+  "]"}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"ProbabilitiesFidelities", "=", 
+    RowBox[{"FindASetOfProbabilitiesAndFidelity", "[", 
+     RowBox[{"X", ",", "X", ",", "6"}], "]"}]}], ";"}], 
+  "Code"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ProbabilitiesFidelities", "=", 
+       RowBox[{"Delete", "[", 
+        RowBox[{"ProbabilitiesFidelities", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"i", ",", "2"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "3"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], "}"}]}], 
+    "]"}], ";"}], "Code"], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SortBy", "[", 
+     StyleBox[
+      RowBox[{"ProbabilitiesFidelities", ",", "First"}], "Code"], 
+     StyleBox["]", "Code"]}], 
+    StyleBox["//", "Code"], "MatrixForm"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"RePlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ImPlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"RePlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ImPlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.841671032501637*^9, 3.8416710478503637`*^9}, {
+   3.841671088784472*^9, 3.841671089478588*^9}, 3.841686974158893*^9, {
+   3.841687766276477*^9, 3.841687767503929*^9}, 3.841687916529234*^9},
+ CellLabel->
+  "In[2205]:=",ExpressionUUID->"bfb2d176-61bb-4614-9150-413c6108ff8c"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+zlAlcEWL56Zz9rJgjstK8r//Qkc9VBOF8p
+/KWZ2529cH4w0xGmWr2D9sZg8Ng+yHzJ9EnFb+H820nLDDNkEPx1743E57i/
+heo/aW9albsrcdFlOJ9n26M7AQ8vwPkT5mndPCxyGW5fNevz8oa/h+H8oL9B
+f2/+PATn3w5hW5PvhHDvV4XLOtWTEPL32goNl507AOfP0rl/NOH+IXsGMHhg
+r3XMIGJ/9Ss4v1d5S49J6Us4306Hp2Cvwiuofy7b/1W4krnp+H043zrMd99/
+9Ttwfoxl++P+j/fg9u1hfLdhRfVROD/qdnnDlHsI/5iAwwPBt0Djf0HzTzhU
+P8x9C71b3jdwv4bz1Zs07066hfDPKjB4BQ/fgrbp24tkr8H5+dl/VrBxX8UZ
+P5Or10/nWngFzp+IEj8n7Q0/2Hz+++wKwn2hIIDw75Q3eWWuGQj/zKl/6C9S
+fwTKv2nv+Jmp4vSpp3D+7MD/k//JPIHzg8HmPYXrj0AzfyZY/RE4n5nvQYDZ
+gcNw/Yfl449E6j6H889a16fNW/AMzmex+qb3uBg3X3Clffqqz08x5GHxXdjy
+o+Rj20M4v2m1RfKraw/g/MkJ/ppSVgj+1SUbOcWmIfiaC6v+dk5ApKe7Vnte
+Km57AA/f42D3X4fzHcDhdRVnfMpey+w5uwghr48SPyftZVDkd0L9cwzOFwH7
+FxG+CmD1CL4sGr8YnH4Q/L0o6f2m/YwNC9ymxz2H2w/hI/zDD7YP4d4z4Pi5
+Bg+PeMlzH86tQYSvtkrC03NSCH4LNLzR/QOTf/vzb06uyiOc5i3jWc+z7PJD
+uP1tu+3S7h5BuE+rfO9r4YkI/jFofAAA+RWgtA==
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {0, 0.9660917830792959}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.841671115114294*^9, 3.8416712472719803`*^9, 
+  3.841671424810342*^9, 3.841671723442707*^9, 3.841671943845236*^9, 
+  3.8416870128454533`*^9, 3.841687768099063*^9, 3.841687917055838*^9},
+ CellLabel->
+  "Out[2210]=",ExpressionUUID->"4bdc4c5a-e4db-4ff8-895a-9849d0964cac"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSTTfGAweE82H6D9JIp9495DK
+h4AHRPMh/rlMNH+wuZ+88Kd1fN0kkU9r84nnk5oeyEs/gy2+KA1/4t1HaX6j
+dXgDAC78RNE=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.841671115114294*^9, 3.8416712472719803`*^9, 
+  3.841671424810342*^9, 3.841671723442707*^9, 3.841671943845236*^9, 
+  3.8416870128454533`*^9, 3.841687768099063*^9, 3.841687917092463*^9},
+ CellLabel->
+  "Out[2211]=",ExpressionUUID->"32df21c0-5695-4043-b669-efecdc43366c"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJyVlEsOgkAMhkdv4hUU13MH4wlM1KW3QRBivAZHYM2KlSYkHsMHQ6uZfzK0
+NCFf/kzp9AWL3Wmznxtjtt+n58HZ0x6Jl7y3Ss2Vs84mRNZL0MzhvdpmRJ2u
+7BXuLSfmif4p0Th7BJxF9FBHQ/U1P41MiNr8U+E8i2jO7/Xu7R6th8+5v0hp
+HtMY5j9eb2tzIusC9NnTYT/H2VI9/3gS0b+M+MX2QdoPif7+1HS/fj6F4O/H
+k+d1Ay3ts3+O89Xvn7afa/je/P9T6I/xsN+YD/aT9Qc2DpOc
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {0, 0.7000000000000001}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.841671115114294*^9, 3.8416712472719803`*^9, 
+  3.841671424810342*^9, 3.841671723442707*^9, 3.841671943845236*^9, 
+  3.8416870128454533`*^9, 3.841687768099063*^9, 3.8416879171325197`*^9},
+ CellLabel->
+  "Out[2212]=",ExpressionUUID->"43304fe0-849d-4e34-bbcc-6c322ee63260"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSTTfGAweE82H6D9JIp9495DK
+h4AHRPMh/rlMNH+wuZ+88Kd1fN0kkU9r84nnk5oeyEs/gy2+KA1/4t1HaX6j
+dXgDAC78RNE=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.841671115114294*^9, 3.8416712472719803`*^9, 
+  3.841671424810342*^9, 3.841671723442707*^9, 3.841671943845236*^9, 
+  3.8416870128454533`*^9, 3.841687768099063*^9, 3.8416879171747026`*^9},
+ CellLabel->
+  "Out[2213]=",ExpressionUUID->"dca1dd51-ee77-416f-a3ad-6d4972e1adf6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\[IndentingNewLine]", "Chapter"], 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"Y", " ", "gates"}], ";"}], "Chapter"], 
+   StyleBox["\n", "Code"], 
+   StyleBox["\n", "Code"], 
+   RowBox[{"Clear", "[", "ProbabilitiesFidelities", "]"}], 
+   StyleBox["\[IndentingNewLine]", "Chapter"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"ProbabilitiesFidelities", "=", 
+      RowBox[{"FindASetOfProbabilitiesAndFidelity", "[", 
+       RowBox[{"Y", ",", "Id", ",", "9"}], "]"}]}], ";"}], "Code"], 
+   "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ProbabilitiesFidelities", "=", 
+         RowBox[{"Delete", "[", 
+          RowBox[{"ProbabilitiesFidelities", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"i", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";"}], ",", 
+       
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], "}"}]}], 
+      "]"}], ";"}], "Code"], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SortBy", "[", 
+      StyleBox[
+       RowBox[{"ProbabilitiesFidelities", ",", "First"}], "Code"], 
+      StyleBox["]", "Code"]}], 
+     StyleBox["//", "Code"], "MatrixForm"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"RePlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"ImPlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"RePlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"ImPlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.841670954621316*^9, 3.841670977694233*^9}, {
+   3.841671092270481*^9, 3.841671092970027*^9}, 3.8416869799215927`*^9, {
+   3.8416877750458937`*^9, 3.8416877760715733`*^9}, 3.841687919598785*^9},
+ CellLabel->
+  "In[2214]:=",ExpressionUUID->"5b327b5d-fe02-4f77-88f8-8a8b6eda73ae"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+zlAlcEWL56Zz9rJgjstK8r//Qkc9VBOF8x
+/KWZ2529cH4o0xGmWr2D9sZg8Ng+2HzJ9EnFb+H820nLDDNkEPw1743E57i/
+heo/aW9RlbsrcdFlOJ9v26M7AQ8vwPmT5mndPCxyGW5fKevz8oa/h+H8wL9B
+f2/+PATnPwhhW5PvhHDvd4XLOtWTkOTbCg2XnTsA58/VuX804f4hewYweGCv
+dcwgYn/1Kzi/W3lLj0npSzjfXoenYK/CK6h/Ltv/UbiSuen4fTjfJsx333/1
+O3B+jGX74/6P9+D27WJ8t2FF9VE4P/J2ecOUewj/mIHDA8E3R+Oj+ycKqh/m
+voXeLe8buF/D+RpNmncn3UL4ZxUYvIKHb1Hb9O1Fstfg/MLsPyvYuK/C+aZo
+8TO5ev10roVX4PyJKPFz0t74g83nv8+uwN0XEgoCCP9OeZNX5pqB8M/C+of+
+IvVHoPyb9k6fmSpOn3oK588M/D/5n8wTOB9sXOhTuP5wNPNngdUfgfMZ+R4E
+mB04DNd/TD7+SKTuczj/rHV92rwFz+B8Fqtveo+LcfMFVtqnr/r8FEMeFt/F
+LT9KPrY9hPObVlskv7r2AM6fkuCvKWWF4F9dspFTbBqCr7Gw6m/nBER6ume1
+56Xitgfw8D0Mdv91OB8SXoj4KkCLT6lrmT1nF13FET8n7aVR5HdC/XMMzof4
+FxG+MmD1uPnF4PSD4KOmd2B8bljgNj3uOdz+GWA+wj8Q+xDuPQ2On2vw8IiX
+PPfh3BpE+GqpJDw9J4XgN0PDG2Y/B9Q/MPk3P//m5Ko8gvMT0MxbxrOeZ9nl
+h3D723bbpd09gnCfdvne18ITEfyj0PgAAE28oMU=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {0, 0.9660917830792959}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.841670978355816*^9, {3.841671223871817*^9, 3.841671250851169*^9}, 
+   3.841671428414866*^9, 3.8416717266632957`*^9, 3.841671948323773*^9, 
+   3.841687013078659*^9, 3.84168777654395*^9, 3.8416879200783367`*^9},
+ CellLabel->
+  "Out[2219]=",ExpressionUUID->"e383ace6-c792-461a-b9e8-c517e32c67c8"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSZD/gqnUWaaq1MYYDB7D5XHx
+U4pWZYSnReyB6D+JZh4m39St9PyXm+V7cNm/dM/ymoAd4TjljV6y/5A0x63/
+yPew7xbTy/dARB/A5XHx7XV4CvYqZO2B+Ocymv9w83HZr3dp6gLLaxk43Uek
+fhtc7tVo0rw76VYUhv9whbdvm3XwCd8oouMHP59U/9wkkU+5+Qe45BmOecTs
+wSXfcmLzr9sCOTjlYXxc8Q/RH0NyeoHxj/L0t1rcysYZH0IbmMPqbHHLE+Iv
+9G5538CdbUNu+lsA0Y8z/ULSX5YN9vAj7D5I/OTgDL8Pz7zqmJsw5dHdQ15+
+JT48AZ9Pl28=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {-1.425933913527082*^-17, 8.555603481162493*^-18}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.841670978355816*^9, {3.841671223871817*^9, 3.841671250851169*^9}, 
+   3.841671428414866*^9, 3.8416717266632957`*^9, 3.841671948323773*^9, 
+   3.841687013078659*^9, 3.84168777654395*^9, 3.841687920118091*^9},
+ CellLabel->
+  "Out[2220]=",ExpressionUUID->"d7ce2355-d1a3-49e6-870a-86e8fa308504"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJydk0EKwkAMRQdv4hVsXc8dxBMIuvU20lot4i08wqxddaUgeA210/zFZPzO
+1EB5fEqS3ySdrraL9cQYs/w8PTc+nhbc131cbC2ErpQ+CAsfD1sKC0K8H/Kd
+5Duqm0DH/TXPxB/0ieQZH/dsDt9ztTMhdEk0+jSqr9Z63to/07m+Xz5udN6a
+1c99xAzr8XuBbgPdjWRcTzPs34l/Xjf1npHtP0V2L9Dz4H7ifaT2NY6p+cXz
+Pirdkjrf5+bk3rl/6H//N/hh+Wwf6L/LnN8bIy2Nwg==
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {0, 0.7}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.841670978355816*^9, {3.841671223871817*^9, 3.841671250851169*^9}, 
+   3.841671428414866*^9, 3.8416717266632957`*^9, 3.841671948323773*^9, 
+   3.841687013078659*^9, 3.84168777654395*^9, 3.8416879201568413`*^9},
+ CellLabel->
+  "Out[2221]=",ExpressionUUID->"61b05bfb-8345-408b-8598-0834d912f5be"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSSS/wMYYDB7D5fHzA/ZA9J9E
+Mw8Xv2APfvsDCMgT0l+wB0I/gMvj5yfsgfjnMpr/cPPx259AwH0E9dvgd28A
+hv/whzep8YOLT6p/bpLIp5b5MP/ikk8gIE8o/gNITi+o/AQC8UFInhA/wYbC
+9Ecg/cLMRw8/ot1HIPww5dHdQ15+JT48AWksWf0=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {-8.673617379884035*^-18, 5.204170427930421*^-18}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.841670978355816*^9, {3.841671223871817*^9, 3.841671250851169*^9}, 
+   3.841671428414866*^9, 3.8416717266632957`*^9, 3.841671948323773*^9, 
+   3.841687013078659*^9, 3.84168777654395*^9, 3.84168792019945*^9},
+ CellLabel->
+  "Out[2222]=",ExpressionUUID->"42d1e03b-fd4b-49d0-8dc3-dfc2648f29ce"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"Y", ".", "rho", ".", "Y"}], " ", "gates"}], ";"}], "Chapter"], 
+  "\n"}], "\n", 
+ RowBox[{"Clear", "[", "ProbabilitiesFidelities", 
+  "]"}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"ProbabilitiesFidelities", "=", 
+    RowBox[{"FindASetOfProbabilitiesAndFidelity", "[", 
+     RowBox[{"Y", ",", "Y", ",", "11"}], "]"}]}], ";"}], 
+  "Code"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ProbabilitiesFidelities", "=", 
+       RowBox[{"Delete", "[", 
+        RowBox[{"ProbabilitiesFidelities", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"i", ",", "2"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "3"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], "}"}]}], 
+    "]"}], ";"}], "Code"], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SortBy", "[", 
+     StyleBox[
+      RowBox[{"ProbabilitiesFidelities", ",", "First"}], "Code"], 
+     StyleBox["]", "Code"]}], 
+    StyleBox["//", "Code"], "MatrixForm"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"RePlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ImPlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"RePlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ImPlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.84167114906284*^9, 3.8416711779857073`*^9}, {
+   3.841671212680442*^9, 3.8416712129583673`*^9}, 3.841686986299657*^9, 
+   3.8416870466949663`*^9, {3.841687780293871*^9, 3.841687780991468*^9}, 
+   3.841687922498214*^9},
+ CellLabel->
+  "In[2223]:=",ExpressionUUID->"34ca1db3-7540-4013-b072-c0123f1d7e49"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+zlAlcEWL56Zz9rJgjstK8t//Qkc9VBOF8p
+/KWZ2529cH4g0xGmWr2D9sZg8Ng+yHzJ9EnFb+H820nLDDNkEPy1743E57i/
+heo/aW9albsrcdFlOJ9726M7AQ8vwPkT5mndPCxyGW5fOevz8oa/h+H84L9B
+f2/+PATn3wphW5PvhHDvV4XLOtWTEPL32goNl507AOfP1bl/NOH+IXsGMHhg
+r33MIGJ/9Ss4v1d5S49J6Us431aHp2Cvwiuofy7b/1W4krnp+H043ybMd99/
+9TtwfpRl++P+j/fg9u1gfLdhRfVROD/qdnnDlHsI/5iDwwPBt0Djf0HzTzRU
+P8x9C71b3jdwv4bz1Zs07066hfDP6lUg8AoevgVt07cXyV6D8/Oy/6xg474K
+51ugxc+k6vXTuRZegfMnosTPSXvjDzaf/z67gnBfKAgg/DvlTV6ZawbCP3Pq
+H/qL1B+B8m/aO31mqjh96imcPyvw/+R/Mk/g/DCweU/h+iPQzIeoPwLns/M9
+CDA7cBiu/7B8/JFI3edw/lnr+rR5C57B+SxW3/QeF+PmC620T1/1+SmGPCy+
+C1t+lHxsewjnN622SH517QGcPyXBX1PKCsG/umQjp9g0BF9zYdXfzgmI9HTX
+as9LxW0P4OF7FOz+63A+JLwQ8VWCFp9S1zJ7zi5CyBuixM9JexkU+Z32rGD/
+HIPzIf5FhC9EPYIvjcYvAacfBH8XSnq/aT99wwK36XHP4fbPAPMR/oHYh3Dv
+GXD8XIOHR7zkuQ/n1iDCV1sl4ek5KQS/GRreMPtZoP6Byb/7+TcnV+URTvOW
+86znWXb5Idz+jt12aXePINynUb73tfBEBP8IND4ADWygvQ==
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {0, 0.9660917830792959}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.8416712138150873`*^9, 3.841671254565542*^9, 
+  3.841671434228937*^9, 3.841671730786395*^9, 3.841671953710533*^9, 
+  3.841687013304797*^9, 3.841687782719357*^9, 3.841687922895253*^9},
+ CellLabel->
+  "Out[2228]=",ExpressionUUID->"6d50679f-34e2-47a6-9c16-3b51761a88e9"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSTTfGAweE82H6D9JIp9495DK
+h4AHRPMh/rlMNH+wuZ+88Kd1fN0kkU9r84nnk5oeyEs/gy2+KA1/4t1HaX6j
+dXgDAC78RNE=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.8416712138150873`*^9, 3.841671254565542*^9, 
+  3.841671434228937*^9, 3.841671730786395*^9, 3.841671953710533*^9, 
+  3.841687013304797*^9, 3.841687782719357*^9, 3.841687922933772*^9},
+ CellLabel->
+  "Out[2229]=",ExpressionUUID->"b5a871e4-7c9b-4b54-9085-9f05bc5f3370"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJydlMENwjAMRQObsALt3TsgJkACjmwTtTSqukZH4MypNyQk5qBN7UN+ZTmK
+perpx0nr/Dg9XB6n6945d56fhbcYP7ozn+0So0nPrGJ8qWZWBtf1L2qYeXr7
+/ZBZpzXfxfjQjqlp4bqPNx2ZomvQwtL6Md8oeazPoviL9Mp4GUcajP34RE8b
+BmVc1veGf2l+Yv+095VT6wck9ofWL5jP9T2Abo35HZwXno+lkXjeKdH//H7K
+9Ve7b5rf2v3V/kcdaPH3D8eth7Y=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {0, 0.7000000000000001}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.8416712138150873`*^9, 3.841671254565542*^9, 
+  3.841671434228937*^9, 3.841671730786395*^9, 3.841671953710533*^9, 
+  3.841687013304797*^9, 3.841687782719357*^9, 3.8416879229741793`*^9},
+ CellLabel->
+  "Out[2230]=",ExpressionUUID->"0d68b2a0-8b5e-4962-bd38-44e1a90edcdc"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSTTfGAweE82H6D9JIp9495DK
+h4AHRPMh/rlMNH+wuZ+88Kd1fN0kkU9r84nnk5oeyEs/gy2+KA1/4t1HaX6j
+dXgDAC78RNE=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.8416712138150873`*^9, 3.841671254565542*^9, 
+  3.841671434228937*^9, 3.841671730786395*^9, 3.841671953710533*^9, 
+  3.841687013304797*^9, 3.841687782719357*^9, 3.841687923017108*^9},
+ CellLabel->
+  "Out[2231]=",ExpressionUUID->"513b85ed-f56e-4b84-bad6-8305d451ad03"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\[IndentingNewLine]", "Chapter"], 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"Z", " ", "gates"}], ";"}], "Chapter"], 
+   StyleBox["\[IndentingNewLine]", "Chapter"], 
+   StyleBox["\[IndentingNewLine]", "Chapter"], 
+   RowBox[{"Clear", "[", "ProbabilitiesFidelities", "]"}], 
+   StyleBox["\n", "Code"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"ProbabilitiesFidelities", "=", 
+      RowBox[{"FindASetOfProbabilitiesAndFidelity", "[", 
+       RowBox[{"Z", ",", "Id", ",", "13"}], "]"}]}], ";"}], "Code"], 
+   "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ProbabilitiesFidelities", "=", 
+         RowBox[{"Delete", "[", 
+          RowBox[{"ProbabilitiesFidelities", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"i", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";"}], ",", 
+       
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], "}"}]}], 
+      "]"}], ";"}], "Code"], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SortBy", "[", 
+      StyleBox[
+       RowBox[{"ProbabilitiesFidelities", ",", "First"}], "Code"], 
+      StyleBox["]", "Code"]}], 
+     StyleBox["//", "Code"], "MatrixForm"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"RePlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"ImPlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"RePlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"ImPlotResults", "[", 
+    RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.841670990695373*^9, 3.841671007400155*^9}, {
+   3.841671097773369*^9, 3.8416710983709087`*^9}, 3.841686991717083*^9, {
+   3.841687787830247*^9, 3.841687788082714*^9}, 3.841687925385785*^9},
+ CellLabel->
+  "In[2232]:=",ExpressionUUID->"013a959f-58f2-408b-add3-53773136dddf"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+zlAlcEWL56Zz9rJgjstK8v//Qkc9VBOF8+
+/KWZ2529cH4w0xGmWr2D9sZg8Ng+0HzJ9EnFb+H820nLDDNkEPy1743E57i/
+heo/aW9albsrcdFlOJ9n26M7AQ8vwPkT5mndPCxyGW5fOevz8oa/h+H8gL9B
+f2/+PATn3wxhW5PvhHDvd4XLOtWTEPL32goNl507AOfP1bl/NOH+IXsGMHhg
+r3nMIGJ/9Ss4v1t5S49J6Us431aHp2Cvwiuofy7b/1G4krnp+H043ybMd99/
+9TtwfpRl++P+j/fg9m1nfLdhRfVROD/idnnDlHsI/5iAwwPBN0fjf0HzTzhU
+P8x9C7xb3jdwv4bz1Zs07066hfDPylUg8AoevgVt07cXyV6D8/Oz/6xg476K
+M34mVK+fzrXwCpw/ESV+TtobfrD5/PfZFYT/QkEA4d+Jb/LKXDMQ/llQ/9Bf
+pP4IlH/T3uEzU8XpU0/h/JmB/yf/k3kC54eBzXuKSH9o5s8Cqz8C57PwPQgw
+O3AYrv+ofPyRSN3ncP5Z6/q0eQuewfksVt/0Hhfj5guttE9f9fkphjwsvota
+fpR8bHsI5zevtkh+de0BnD8lwV9TygrBv7ZkI6fYNARfc2HV384JiPR012rP
+S8VtD+Dhexjs/utwvhM4vBDxVYQWn5LXMnvOLkLIG6PEz0l7aRT5nfbMYP8c
+g/MFwP5FhC9EPYIvg8YvAqcfBH8HSnq/aT99wwK36XHP4fbPAPMR/oHYh3Dv
+GXD8XIOHR7zkuQ/n1iDCV1sl4ek5KczwRvcPTP7Nz785uSqP4PwENPOW8qzn
+WXb5Idz+jt12aXePINynXb73tfBEBP8oND4Ahn2gjQ==
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {0, 0.9660917830792959}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.841671008428563*^9, 3.841671264773978*^9, 
+  3.841671440006254*^9, 3.841671734614789*^9, 3.841671957244656*^9, 
+  3.8416870136062307`*^9, 3.841687788730565*^9, 3.841687925833488*^9},
+ CellLabel->
+  "Out[2237]=",ExpressionUUID->"0905e30e-1db8-47cf-a272-772d6659f954"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSTTfGAweE82H6D9JIp9495DK
+h4AHRPMh/rlMNH+wuZ+88Kd1fN0kkU9r84nnk5oeyEs/gy2+KA1/4t1HaX6j
+dXgDAC78RNE=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.841671008428563*^9, 3.841671264773978*^9, 
+  3.841671440006254*^9, 3.841671734614789*^9, 3.841671957244656*^9, 
+  3.8416870136062307`*^9, 3.841687788730565*^9, 3.841687925870613*^9},
+ CellLabel->
+  "Out[2238]=",ExpressionUUID->"d6b6fc36-69c9-4e0d-b2d9-b25cdfb89133"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wzoPSsmSCwE4OehkPcGAweE01D9J20nwGl
+ieNj2otOz0DjzyHAh9EMYPCAaBrij8v2RlAaxjdB48NoXO4jNnxx6YfxYe76
+Dwb3cfL/Qfmw8EWnSYsPQjRmeOP3/02o/E04Hz9NODwpM594Gj2+cdHo6QNX
+ekGXJzc+SI0vXOkLV7jiyk/Y9aOHP7HuOokzv+Gi0e0nNn5Q9RMfvgAMn5le
+
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {0, 0.7000000000000002}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.841671008428563*^9, 3.841671264773978*^9, 
+  3.841671440006254*^9, 3.841671734614789*^9, 3.841671957244656*^9, 
+  3.8416870136062307`*^9, 3.841687788730565*^9, 3.841687925908925*^9},
+ CellLabel->
+  "Out[2239]=",ExpressionUUID->"b3ce3da8-e295-4b83-af36-6681952d051e"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSTTfGAweE82H6D9JIp9495DK
+h4AHRPMh/rlMNH+wuZ+88Kd1fN0kkU9r84nnk5oeyEs/gy2+KA1/4t1HaX6j
+dXgDAC78RNE=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.841671008428563*^9, 3.841671264773978*^9, 
+  3.841671440006254*^9, 3.841671734614789*^9, 3.841671957244656*^9, 
+  3.8416870136062307`*^9, 3.841687788730565*^9, 3.841687925949917*^9},
+ CellLabel->
+  "Out[2240]=",ExpressionUUID->"30bc8a31-5299-4904-aef8-0c2e3432ccc6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"Z", ".", "rho", ".", "Z"}], " ", "gates"}], ";"}], 
+  "Chapter"], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "ProbabilitiesFidelities", "]"}], "\n", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"ProbabilitiesFidelities", "=", 
+    RowBox[{"FindASetOfProbabilitiesAndFidelity", "[", 
+     RowBox[{"Z", ",", "Z", ",", "16"}], "]"}]}], ";"}], 
+  "Code"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ProbabilitiesFidelities", "=", 
+       RowBox[{"Delete", "[", 
+        RowBox[{"ProbabilitiesFidelities", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"i", ",", "2"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "3"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], "}"}]}], 
+    "]"}], ";"}], "Code"], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SortBy", "[", 
+     StyleBox[
+      RowBox[{"ProbabilitiesFidelities", ",", "First"}], "Code"], 
+     StyleBox["]", "Code"]}], 
+    StyleBox["//", "Code"], "MatrixForm"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"RePlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ImPlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "2", ",", "\"\<Fidelity\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"RePlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ImPlotResults", "[", 
+  RowBox[{"ProbabilitiesFidelities", ",", "3", ",", "\"\<RecGate\>\""}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.841671290481112*^9, 3.841671303226611*^9}, 
+   3.841686996487236*^9, {3.841687796734989*^9, 3.841687797271928*^9}, 
+   3.8416879287747707`*^9},
+ CellLabel->
+  "In[2241]:=",ExpressionUUID->"63f62396-5def-4dab-8041-fe42b2f272b2"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+zlAlcEWL56Zz9rJgjstK8t//Qkc9VBOF82
+/KWZ2529cH4g0xGmWr2D9sZg8Ng+0HzJ9EnFb+H820nLDDNkEPy1743E57i/
+heo/aW9SlbsrcdFlOJ9326M7AQ8vwPkT52ndPCxyGW5fFevz8oa/h+H84L9B
+f2/+PATn3w5hW5PvhHDvV4XLOtWTEPL32goNl507AOfP1rl/NOH+IXsGMHhg
+r33MIGJ/9Ss4v1d5S49J6Us4306Hp2Cvwiuofy7b/1G4krnp+H043yrMd99/
+9TtwfoRl++P+j/fg9u1gfLdhRfVROD/2dnnDlHsI/xiDwwPBN0fjf0HzD0w/
+zH0LvVveN3C/hvM1mjTvTrqF8M8qMHgFD9+Ctunbi2Svwfl52X9WsHFfhfPN
+0OJnYvX66VwLr+CIn5P2hh9sPv99dgXuvohQEED4d8qbvDLXDIR/5tQ/9Bep
+PwLl37R3+sxUcfrUUzh/duD/yf9knsD5YONCn8L1B6CZPwus/gicz8z3IMDs
+wGG4/sPy8UcidZ/D+Wes69PmLXgG57NYfdN7XIybL7jSPn3V56cY8rD4Lmr5
+UfKx7SGc37zaIvnVtQdw/uQEf00pKwT/6pKNnGLTEHzNhVV/Oycg0tNdqz0v
+Fbc9gIcvxP3X4XxIeCHiqwgtPiWuZfacXYSQN0aJn5P2UijyO+1Zwf45BucL
+gf2LCF9FsHoEXwqNXwZOPwj+LpT0ftN++oYFbtPjnsPtnwHmI/wjALYP4d7T
+4Pi5Bg+PeMlzH86tQYSvtkrC03NSmOENs58B6h+Y/Luff3NyVR7hNG85z3qe
+ZZcfwu1v2W2XdvcIwn1a5XtfC09E8I9B4wMAs22gmw==
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->{443.71234130859307`, Automatic},
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {0, 0.9660917830792959}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.84167130515298*^9, 3.841671443654807*^9, 
+  3.8416717379629383`*^9, 3.841671975765983*^9, 3.841687013873295*^9, 
+  3.841687797863227*^9, 3.8416879292590437`*^9},
+ CellLabel->
+  "Out[2246]=",ExpressionUUID->"432cb26b-8b98-41e3-86cd-0e564d0ee619"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSTTfGAweE82H6D9JIp9495DK
+h4AHRPMh/rlMNH+wuZ+88Kd1fN0kkU9r84nnk5oeyEs/gy2+KA1/4t1HaX6j
+dXgDAC78RNE=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"Fidelity\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->{443.71234130859307`, Automatic},
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"Fidelity\"", ")"}]}], HoldForm], TraditionalForm],
+  PlotRange->{{0, 0.7}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.84167130515298*^9, 3.841671443654807*^9, 
+  3.8416717379629383`*^9, 3.841671975765983*^9, 3.841687013873295*^9, 
+  3.841687797863227*^9, 3.841687929293324*^9},
+ CellLabel->
+  "Out[2247]=",ExpressionUUID->"4171df76-4891-47d2-b6e9-1f2968a7e0e6"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wzoPSsmSCwE4OehoNvDAaPiaYh+k9C9Z+E
+82fg5e+0n4dm/xwc7sRFo6uHuZ8BDB7YM0JpQnyIPy7bG0FpQnxc7llAIHzR
+3TsDh34GNHfiov/9B4H7OMObtPjApNHjC939uMIfwr+JQc9B489A4WOGF34a
+XT8mnxCNSz2u+EenCaUXdNoEJf0QDn90ejoB+Zkkxhd6eiWUnvGHP2H3w/xL
+bHgZo4QXevmECE9c5pmihTd6fpiNI/wAN4aNfQ==
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Re", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->{443.71234130859307`, Automatic},
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Re", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {0, 0.7000000000000002}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.84167130515298*^9, 3.841671443654807*^9, 
+  3.8416717379629383`*^9, 3.841671975765983*^9, 3.841687013873295*^9, 
+  3.841687797863227*^9, 3.841687929328678*^9},
+ CellLabel->
+  "Out[2248]=",ExpressionUUID->"3bb6044b-5cc9-4578-83ad-f472ae0ba788"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`], 
+    AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAWIQnQYGz+wZoGDWTBDYSTTfGAweE82H6D9JIp9495DK
+h4AHRPMh/rlMNH+wuZ+88Kd1fN0kkU9r84nnk5oeyEs/gy2+KA1/4t1HaX6j
+dXgDAC78RNE=
+     "]]}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox[
+      RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}], 
+      HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox[
+      RowBox[{"Im", "(", "\"RecGate\"", ")"}], HoldForm], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->{443.71234130859307`, Automatic},
+  LabelStyle->{
+    GrayLevel[0]},
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    TagBox[
+     RowBox[{"Distribution", " ", "of", " ", 
+       RowBox[{"Im", "(", "\"RecGate\"", ")"}]}], HoldForm], TraditionalForm],
+  
+  PlotRange->{{0, 0.7}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.84167130515298*^9, 3.841671443654807*^9, 
+  3.8416717379629383`*^9, 3.841671975765983*^9, 3.841687013873295*^9, 
+  3.841687797863227*^9, 3.8416879293698397`*^9},
+ CellLabel->
+  "Out[2249]=",ExpressionUUID->"318bb78a-3f1f-4ca2-8652-bfd3dc07d196"]
+}, Open  ]]
+},
+WindowSize->{1003, 992},
+WindowMargins->{{-4, Automatic}, {Automatic, 0}},
+Magnification:>0.75 Inherited,
+FrontEndVersion->"12.3 for Mac OS X x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e93948c2-8d21-42b2-a09a-060d9d81696a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 36764, 991, 1847, "Input",ExpressionUUID->"5bd1219e-9eb4-4f6c-8f29-e1b2184b2078"],
+Cell[CellGroupData[{
+Cell[37189, 1008, 2652, 66, 231, "Input",ExpressionUUID->"1f84763f-df3b-47fb-9f85-c4e2a8df88ec"],
+Cell[39844, 1076, 3297, 77, 152, "Output",ExpressionUUID->"0ef94aaa-5333-4f14-bd7f-aa8300d07fed"],
+Cell[43144, 1155, 2846, 69, 135, "Output",ExpressionUUID->"61606db1-9982-4410-8286-b4abad075aff"],
+Cell[45993, 1226, 2650, 68, 147, "Output",ExpressionUUID->"3b5a2ea6-f094-4092-876d-6b24449276a2"],
+Cell[48646, 1296, 2668, 67, 127, "Output",ExpressionUUID->"6a272562-5a1d-48c0-9340-bf708ba66ea0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51351, 1368, 2228, 60, 198, "Input",ExpressionUUID->"bfb2d176-61bb-4614-9150-413c6108ff8c"],
+Cell[53582, 1430, 2753, 67, 152, "Output",ExpressionUUID->"4bdc4c5a-e4db-4ff8-895a-9849d0964cac"],
+Cell[56338, 1499, 1977, 55, 143, "Output",ExpressionUUID->"32df21c0-5695-4043-b669-efecdc43366c"],
+Cell[58318, 1556, 2154, 58, 147, "Output",ExpressionUUID->"43304fe0-849d-4e34-bbcc-6c322ee63260"],
+Cell[60475, 1616, 1980, 56, 139, "Output",ExpressionUUID->"dca1dd51-ee77-416f-a3ad-6d4972e1adf6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62492, 1677, 2401, 62, 215, "Input",ExpressionUUID->"5b327b5d-fe02-4f77-88f8-8a8b6eda73ae"],
+Cell[64896, 1741, 2781, 68, 152, "Output",ExpressionUUID->"e383ace6-c792-461a-b9e8-c517e32c67c8"],
+Cell[67680, 1811, 2289, 60, 131, "Output",ExpressionUUID->"d7ce2355-d1a3-49e6-870a-86e8fa308504"],
+Cell[69972, 1873, 2161, 59, 147, "Output",ExpressionUUID->"61b05bfb-8345-408b-8598-0834d912f5be"],
+Cell[72136, 1934, 2134, 58, 127, "Output",ExpressionUUID->"42d1e03b-fd4b-49d0-8dc3-dfc2648f29ce"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74307, 1997, 2282, 61, 214, "Input",ExpressionUUID->"34ca1db3-7540-4013-b072-c0123f1d7e49"],
+Cell[76592, 2060, 2759, 67, 152, "Output",ExpressionUUID->"6d50679f-34e2-47a6-9c16-3b51761a88e9"],
+Cell[79354, 2129, 1975, 55, 143, "Output",ExpressionUUID->"b5a871e4-7c9b-4b54-9085-9f05bc5f3370"],
+Cell[81332, 2186, 2132, 58, 147, "Output",ExpressionUUID->"0d68b2a0-8b5e-4962-bd38-44e1a90edcdc"],
+Cell[83467, 2246, 1976, 56, 139, "Output",ExpressionUUID->"513b85ed-f56e-4b84-bad6-8305d451ad03"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[85480, 2307, 2418, 62, 215, "Input",ExpressionUUID->"013a959f-58f2-408b-add3-53773136dddf"],
+Cell[87901, 2371, 2755, 67, 152, "Output",ExpressionUUID->"0905e30e-1db8-47cf-a272-772d6659f954"],
+Cell[90659, 2440, 1975, 55, 143, "Output",ExpressionUUID->"d6b6fc36-69c9-4e0d-b2d9-b25cdfb89133"],
+Cell[92637, 2497, 2102, 58, 147, "Output",ExpressionUUID->"b3ce3da8-e295-4b83-af36-6681952d051e"],
+Cell[94742, 2557, 1976, 56, 139, "Output",ExpressionUUID->"30bc8a31-5299-4904-aef8-0c2e3432ccc6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[96755, 2618, 2159, 58, 182, "Input",ExpressionUUID->"63f62396-5def-4dab-8041-fe42b2f272b2"],
+Cell[98917, 2678, 2781, 68, 190, "Output",ExpressionUUID->"432cb26b-8b98-41e3-86cd-0e564d0ee619"],
+Cell[101701, 2748, 1999, 56, 183, "Output",ExpressionUUID->"4171df76-4891-47d2-b6e9-1f2968a7e0e6"],
+Cell[103703, 2806, 2166, 59, 186, "Output",ExpressionUUID->"3bb6044b-5cc9-4578-83ad-f472ae0ba788"],
+Cell[105872, 2867, 2002, 57, 204, "Output",ExpressionUUID->"318bb78a-3f1f-4ca2-8652-bfd3dc07d196"]
+}, Open  ]]
+}
+]
+*)
+
