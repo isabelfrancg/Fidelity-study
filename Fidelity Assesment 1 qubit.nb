@@ -1,0 +1,1262 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     53418,       1254]
+NotebookOptionsPosition[     52882,       1238]
+NotebookOutlinePosition[     53274,       1254]
+CellTagsIndexPosition[     53231,       1251]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"Fidelity", " ", "Assesment", " ", "1", " ", "qubit"}], ";"}], 
+  "Title"]], "Input",
+ CellChangeTimes->{{3.843396216203939*^9, 3.843396222917244*^9}, {
+  3.8434348162578373`*^9, 
+  3.8434348171820583`*^9}},ExpressionUUID->"c8c3c7ee-faac-4bc5-9b46-\
+07464bec26c6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FChi", "[", 
+    RowBox[{"Chiid_", ",", "Chirec_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Numerator", ",", "Denominator"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"Numerator", "=", 
+       RowBox[{"Tr", "[", 
+        RowBox[{"Chirec", ".", 
+         RowBox[{"ConjugateTranspose", "[", "Chiid", "]"}]}], "]"}]}], ";", 
+      RowBox[{"Denominator", "=", 
+       SqrtBox[
+        RowBox[{
+         RowBox[{"Tr", "[", 
+          RowBox[{"Chirec", ".", 
+           RowBox[{"ConjugateTranspose", "[", "Chirec", "]"}]}], "]"}], " ", 
+         RowBox[{"Tr", "[", 
+          RowBox[{"Chiid", ".", 
+           RowBox[{"ConjugateTranspose", "[", "Chiid", "]"}]}], "]"}]}]]}], 
+      ";", 
+      FractionBox["Numerator", "Denominator"]}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CalculateFChi1qubit", "[", 
+    RowBox[{
+    "Pideal_", ",", "Sideal_", ",", "Projectors_", ",", "States_", ",", "AI_",
+      ",", "Gate_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Chi", ",", "RecGate", ",", "FidelityChi", ",", "idealChi"}], 
+      "}"}], ",", 
+     RowBox[{
+      RowBox[{"Chi", "=", 
+       RowBox[{"CalculateChi1qubit", "[", 
+        RowBox[{"Projectors", ",", "States", ",", "AI", ",", "Gate"}], 
+        "]"}]}], ";", 
+      RowBox[{"idealChi", "=", 
+       RowBox[{"CalculateChi1qubit", "[", 
+        RowBox[{"Pideal", ",", "Sideal", ",", "AI", ",", "Gate"}], "]"}]}], 
+      ";", 
+      RowBox[{"FidelityChi", "=", 
+       RowBox[{"FChi", "[", 
+        RowBox[{"idealChi", ",", "Chi"}], "]"}]}], ";", 
+      RowBox[{"Simplify", "[", "FidelityChi", "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"LogPlotResults", "[", 
+     RowBox[{
+     "ProbabilitiesFidelities_", ",", "featureNumber_", ",", "String_"}], 
+     "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "Plot", "}"}], ",", 
+      RowBox[{
+       RowBox[{"Plot", "=", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Log", "[", 
+              RowBox[{"ProbabilitiesFidelities", "\[LeftDoubleBracket]", 
+               RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], ",", 
+             RowBox[{"Log", "[", 
+              RowBox[{"1", "-", 
+               RowBox[{"ProbabilitiesFidelities", "\[LeftDoubleBracket]", 
+                RowBox[{"i", ",", "featureNumber"}], 
+                "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], 
+            "}"}]}], "]"}], "]"}]}], ";", 
+       RowBox[{"Show", "[", 
+        RowBox[{"Plot", ",", 
+         RowBox[{"AxesLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"HoldForm", "[", 
+             RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}],
+              "]"}], ",", 
+            RowBox[{"HoldForm", "[", 
+             RowBox[{"Re", "[", "String", "]"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"PlotLabel", "\[Rule]", 
+          RowBox[{"HoldForm", "[", 
+           RowBox[{"Distribution", " ", "of", " ", 
+            RowBox[{"Re", "[", "String", "]"}]}], "]"}]}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"GrayLevel", "[", "0", "]"}], "}"}]}]}], "]"}]}]}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PlotResults", "[", 
+     RowBox[{
+     "ProbabilitiesFidelities_", ",", "featureNumber_", ",", "String_"}], 
+     "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "Plot", "}"}], ",", 
+      RowBox[{
+       RowBox[{"Plot", "=", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"ProbabilitiesFidelities", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"ProbabilitiesFidelities", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "featureNumber"}], 
+              "\[RightDoubleBracket]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], 
+            "}"}]}], "]"}], "]"}]}], ";", 
+       RowBox[{"Show", "[", 
+        RowBox[{"Plot", ",", 
+         RowBox[{"AxesLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"HoldForm", "[", 
+             RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}],
+              "]"}], ",", 
+            RowBox[{"HoldForm", "[", 
+             RowBox[{"Re", "[", "String", "]"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"PlotLabel", "\[Rule]", 
+          RowBox[{"HoldForm", "[", 
+           RowBox[{"Distribution", " ", "of", " ", 
+            RowBox[{"Re", "[", "String", "]"}]}], "]"}]}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"GrayLevel", "[", "0", "]"}], "}"}]}]}], "]"}]}]}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LogPlotResults3", "[", 
+    RowBox[{
+    "ProbabilitiesFidelitiesInputError_", ",", 
+     "ProbabilitiesFidelitiesMeasurementError_", ",", 
+     "ProbabilitiesFidelitiesInputandMeasurementError_", ",", 
+     "featureNumber_", ",", "featureNumberMI_", ",", "String_", ",", 
+     "Title_"}], "]"}], ":=", 
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"ListPlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputError", "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputError", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumber"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesInputError", "]"}]}], 
+                "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "15", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Input Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "15", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesMeasurementError", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesMeasurementError", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumber"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesMeasurementError", 
+                  "]"}]}], "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "4", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputandMeasurementError", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputandMeasurementError", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumberMI"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", 
+                  "ProbabilitiesFidelitiesInputandMeasurementError", "]"}]}], 
+                "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "12", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement & Input Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "12", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}]}], "}"}],
+        ",", 
+       RowBox[{"AxesLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<probability of no errors\>\"", ",", 
+            RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"String", ",", 
+            RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "}"}]}], ",", 
+       RowBox[{"TicksStyle", "->", " ", 
+        RowBox[{"FontSize", "->", "16"}]}], ",", 
+       RowBox[{"PlotRange", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "0.10"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "20"}]}], "}"}]}], "}"}]}]}], "]"}], ",", 
+     RowBox[{"PlotLabel", "->", 
+      RowBox[{"Style", "[", 
+       RowBox[{"Title", ",", 
+        RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], ",", 
+     RowBox[{"ImageSize", "->", "900"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LogPlotResults5", "[", 
+    RowBox[{
+    "ProbabilitiesFidelitiesInputError1_", ",", 
+     "ProbabilitiesFidelitiesMeasurementError1_", ",", 
+     "ProbabilitiesFidelitiesInputError2_", ",", 
+     "ProbabilitiesFidelitiesMeasurementError2_", ",", 
+     "ProbabilitiesFidelitiesInputandMeasurementError_", ",", 
+     "featureNumber_", ",", "featureNumberMI_", ",", 
+     "featureNumberScattered_", ",", "String_", ",", "Title_"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"ListPlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputError2", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputError2", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumberScattered"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesInputError2", "]"}]}],
+                 "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "15", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Input Error Scattered\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "15", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesMeasurementError2", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesMeasurementError2", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumberScattered"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesMeasurementError2", 
+                  "]"}]}], "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "6", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement Error Scattered\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "6", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputError1", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputError1", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumber"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesInputError1", "]"}]}],
+                 "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Input Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "3", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesMeasurementError1", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesMeasurementError1", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumber"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesMeasurementError1", 
+                  "]"}]}], "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "11", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "11", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputandMeasurementError", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputandMeasurementError", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumberMI"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", 
+                  "ProbabilitiesFidelitiesInputandMeasurementError", "]"}]}], 
+                "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "12", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement & Input Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "12", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}]}], "}"}],
+        ",", 
+       RowBox[{"AxesLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<probability of no errors\>\"", ",", 
+            RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"String", ",", 
+            RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "}"}]}], ",", 
+       RowBox[{"TicksStyle", "->", " ", 
+        RowBox[{"FontSize", "->", "16"}]}], ",", 
+       RowBox[{"PlotRange", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "0.10"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "20"}]}], "}"}]}], "}"}]}]}], "]"}], ",", 
+     RowBox[{"PlotLabel", "->", 
+      RowBox[{"Style", "[", 
+       RowBox[{"Title", ",", 
+        RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], ",", 
+     RowBox[{"ImageSize", "->", "900"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LogPlotResults6", "[", 
+    RowBox[{
+    "ProbabilitiesFidelitiesInputError1_", ",", 
+     "ProbabilitiesFidelitiesMeasurementError1_", ",", 
+     "ProbabilitiesFidelitiesInputError2_", ",", 
+     "ProbabilitiesFidelitiesMeasurementError2_", ",", 
+     "ProbabilitiesFidelitiesInputandMeasurementError_", ",", 
+     "ProbabilitiesFidelitiesInputandMeasurementError2_", ",", 
+     "featureNumber_", ",", "featureNumberMI_", ",", 
+     "featureNumberScattered_", ",", "String_", ",", "Title_"}], "]"}], ":=", 
+   
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"ListPlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputError2", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputError2", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumberScattered"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesInputError2", "]"}]}],
+                 "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "15", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Input Error Scattered\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "15", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesMeasurementError2", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesMeasurementError2", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumberScattered"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesMeasurementError2", 
+                  "]"}]}], "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "6", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement Error Scattered\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "6", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputError1", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputError1", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumber"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesInputError1", "]"}]}],
+                 "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Input Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "3", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesMeasurementError1", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesMeasurementError1", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumber"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", "ProbabilitiesFidelitiesMeasurementError1", 
+                  "]"}]}], "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "11", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "11", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputandMeasurementError", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputandMeasurementError", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumberMI"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", 
+                  "ProbabilitiesFidelitiesInputandMeasurementError", "]"}]}], 
+                "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "12", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement & Input Error\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "12", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}], ",", 
+         RowBox[{"Labeled", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Log", "[", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputandMeasurementError2", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                 ",", 
+                 RowBox[{"Log", "[", 
+                  RowBox[{"1", "-", 
+                   RowBox[{
+                   "ProbabilitiesFidelitiesInputandMeasurementError2", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "featureNumberMI"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", 
+                 RowBox[{
+                 "Length", "[", 
+                  "ProbabilitiesFidelitiesInputandMeasurementError2", "]"}]}],
+                 "}"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Measurement & Input Error Scattered\>\"", ",", 
+             RowBox[{
+              RowBox[{"ColorData", "[", 
+               RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", 
+             RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "]"}]}], "}"}],
+        ",", 
+       RowBox[{"AxesLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<probability of no errors\>\"", ",", 
+            RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"String", ",", 
+            RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], "}"}]}], ",", 
+       RowBox[{"TicksStyle", "->", " ", 
+        RowBox[{"FontSize", "->", "16"}]}], ",", 
+       RowBox[{"PlotRange", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "0.10"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "20"}]}], "}"}]}], "}"}]}]}], "]"}], ",", 
+     RowBox[{"PlotLabel", "->", 
+      RowBox[{"Style", "[", 
+       RowBox[{"Title", ",", 
+        RowBox[{"FontSize", "\[Rule]", "22"}]}], "]"}]}], ",", 
+     RowBox[{"ImageSize", "->", "900"}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LogPlotResults27", "[", 
+   RowBox[{
+   "ProbabilitiesFidelitiesInputError1_", ",", 
+    "ProbabilitiesFidelitiesInputError2_", ",", 
+    "ProbabilitiesFidelitiesInputError3_", ",", 
+    "ProbabilitiesFidelitiesMeasurementError1_", ",", 
+    "ProbabilitiesFidelitiesMeasurementError2_", ",", 
+    "ProbabilitiesFidelitiesMeasurementError3_", ",", 
+    "ProbabilitiesFidelitiesInputandMeasurementError1_", ",", 
+    "ProbabilitiesFidelitiesInputandMeasurementError2_", ",", 
+    "ProbabilitiesFidelitiesInputandMeasurementError3_", ",", 
+    "featureNumber_", ",", "featureNumberMI_", ",", "String_", ",", 
+    "Title_"}], "]"}], ":=", 
+  RowBox[{"Show", "[", 
+   RowBox[{
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesInputError1", "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputError1", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumber"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", "ProbabilitiesFidelitiesInputError1", "]"}]}], 
+               "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "15", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Input Error, \[Gamma]=0.2\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "15", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesMeasurementError1", 
+                  "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesMeasurementError1", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumber"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", "ProbabilitiesFidelitiesMeasurementError1", 
+                 "]"}]}], "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "4", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Measurement Error, \[Gamma]=0.2\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "4", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesInputandMeasurementError1", 
+                  "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputandMeasurementError1", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumberMI"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", 
+                 "ProbabilitiesFidelitiesInputandMeasurementError1", "]"}]}], 
+               "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "12", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Measurement and Input Error, \[Gamma]=0.2\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "12", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesInputError2", "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputError2", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumber"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", "ProbabilitiesFidelitiesInputError2", "]"}]}], 
+               "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "15", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Input Error, \[Gamma]=0.5\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "15", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesMeasurementError2", 
+                  "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesMeasurementError2", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumber"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", "ProbabilitiesFidelitiesMeasurementError2", 
+                 "]"}]}], "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "4", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Measurement Error, \[Gamma]=0.5\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "4", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesInputandMeasurementError2", 
+                  "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputandMeasurementError2", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumberMI"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", 
+                 "ProbabilitiesFidelitiesInputandMeasurementError2", "]"}]}], 
+               "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "12", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Measurement and Input Error, \[Gamma]=0.5\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "12", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesInputError3", "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputError3", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumber"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", "ProbabilitiesFidelitiesInputError3", "]"}]}], 
+               "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "15", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Input Error, \[Gamma]=0.8\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "15", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesMeasurementError3", 
+                  "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesMeasurementError3", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumber"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", "ProbabilitiesFidelitiesMeasurementError2", 
+                 "]"}]}], "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "4", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Measurement Error, \[Gamma]=0.8\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "4", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Log", "[", 
+                 RowBox[{
+                 "ProbabilitiesFidelitiesInputandMeasurementError3", 
+                  "\[LeftDoubleBracket]", 
+                  RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], 
+                ",", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", 
+                  RowBox[{
+                  "ProbabilitiesFidelitiesInputandMeasurementError3", 
+                   "\[LeftDoubleBracket]", 
+                   RowBox[{"i", ",", "featureNumberMI"}], 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{
+                "Length", "[", 
+                 "ProbabilitiesFidelitiesInputandMeasurementError3", "]"}]}], 
+               "}"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "12", "]"}], "]"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Measurement and Input Error, \[Gamma]=0.8\>\"", ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", 
+              RowBox[{"97", ",", "\"\<ColorList\>\""}], "]"}], "[", 
+             RowBox[{"[", "12", "]"}], "]"}]}], "]"}]}], "]"}]}], "}"}], ",", 
+      
+      RowBox[{"AxesLabel", "->", 
+       RowBox[{"{", 
+        RowBox[{"\"\<probability of no errors\>\"", ",", "String"}], 
+        "}"}]}]}], "]"}], ",", 
+    RowBox[{"PlotLabel", "->", "Title"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.843418925634577*^9, 3.843418935217679*^9}, {
+   3.843434890112879*^9, 3.843434891067802*^9}, {3.843566064229591*^9, 
+   3.84356615310918*^9}, {3.843566251684848*^9, 3.8435662655235853`*^9}, {
+   3.8435663098921843`*^9, 3.843566313984462*^9}, {3.84356636599642*^9, 
+   3.843566395019717*^9}, {3.843566615921075*^9, 3.8435666462874126`*^9}, {
+   3.843566738129561*^9, 3.843566763272296*^9}, {3.843566849393067*^9, 
+   3.843566853560068*^9}, {3.8435668959929333`*^9, 3.843566896634274*^9}, {
+   3.843567067290976*^9, 3.843567127888576*^9}, {3.843567255243805*^9, 
+   3.843567275665217*^9}, {3.843567380115245*^9, 3.843567510042684*^9}, {
+   3.843567561974234*^9, 3.843567577653496*^9}, {3.843567692337885*^9, 
+   3.843567724434492*^9}, {3.843567758024832*^9, 3.843567765940501*^9}, {
+   3.843567971618238*^9, 3.843568015680517*^9}, {3.843568089773851*^9, 
+   3.843568092507257*^9}, {3.843568961670762*^9, 3.843569006264132*^9}, 
+   3.8435692120924253`*^9, 3.843575971070644*^9, {3.8435760135736303`*^9, 
+   3.8435760966862783`*^9}, {3.843576389556579*^9, 3.843576389687738*^9}, {
+   3.843576440855425*^9, 3.843576443566257*^9}, {3.8435766322971067`*^9, 
+   3.843576661489139*^9}, {3.843584858715823*^9, 3.8435849401103992`*^9}, {
+   3.8435849757468367`*^9, 3.8435850454882717`*^9}, {3.8435850888051443`*^9, 
+   3.84358512355616*^9}, {3.843585619289913*^9, 3.843585745759317*^9}, {
+   3.843586009893441*^9, 3.8435860158484097`*^9}, {3.843586682750053*^9, 
+   3.8435867387316923`*^9}, {3.843586785552587*^9, 3.843586797075692*^9}, {
+   3.843664866005479*^9, 3.84366495080062*^9}, {3.8436650959906397`*^9, 
+   3.843665173567317*^9}, {3.843665262395671*^9, 3.843665287955922*^9}, {
+   3.8436654726268997`*^9, 3.843665480733426*^9}, {3.843665668504328*^9, 
+   3.843665727712484*^9}, {3.843665787712654*^9, 3.8436658128268833`*^9}, {
+   3.843665894920558*^9, 3.843665907214382*^9}, {3.843666000378366*^9, 
+   3.843666038704557*^9}, {3.84366610222188*^9, 3.843666118300353*^9}, {
+   3.843666248904324*^9, 3.843666264150641*^9}, {3.843666390995269*^9, 
+   3.843666442927723*^9}, {3.843667293085445*^9, 3.8436673858613253`*^9}, {
+   3.843667501845779*^9, 3.843667554172575*^9}, {3.843701027074401*^9, 
+   3.8437010545475483`*^9}, {3.8437012830456953`*^9, 
+   3.8437013023229313`*^9}, {3.843701421922873*^9, 3.843701430233687*^9}, {
+   3.843702334115518*^9, 3.84370234933025*^9}, {3.843702531632512*^9, 
+   3.843702583814699*^9}, {3.843703128286105*^9, 3.843703130752696*^9}, {
+   3.843703639897501*^9, 3.84370367050665*^9}, {3.843704819457184*^9, 
+   3.8437048313053207`*^9}, {3.843736317058033*^9, 3.843736328647332*^9}, {
+   3.843739912106645*^9, 3.843739928698573*^9}, {3.843739990249316*^9, 
+   3.843739991688456*^9}, {3.8437400626003637`*^9, 3.843740073881381*^9}, {
+   3.843741315164637*^9, 3.84374132380136*^9}, {3.843742121237308*^9, 
+   3.8437421501477823`*^9}, 3.843743118448203*^9, {3.843744387563342*^9, 
+   3.8437444470905247`*^9}, {3.843744501491001*^9, 3.843744504894641*^9}, {
+   3.843744694731192*^9, 3.843744694949573*^9}, {3.8439522257343607`*^9, 
+   3.843952254287772*^9}, {3.843957690708695*^9, 3.843957695557909*^9}, {
+   3.84398473041908*^9, 3.8439847305304403`*^9}, {3.843984950099575*^9, 
+   3.843984950162147*^9}, {3.843984992751369*^9, 3.843984992847649*^9}, {
+   3.84398672003432*^9, 3.84398673398377*^9}, 3.843986775717267*^9, 
+   3.84398686764333*^9, {3.843989046222978*^9, 3.843989046772485*^9}, {
+   3.8439897652653723`*^9, 3.8439897653508368`*^9}, {3.844448289969798*^9, 
+   3.844448321250435*^9}},ExpressionUUID->"32144748-9a16-4c45-b620-\
+b549bedfd3d6"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8435687718129787`*^9, 3.8435687721294727`*^9}, {
+   3.843569008034048*^9, 3.8435690090861273`*^9}, {3.8435735060138683`*^9, 
+   3.843573585873999*^9}, {3.843573842083198*^9, 3.843573845942575*^9}, {
+   3.8435738937178593`*^9, 3.8435738952571774`*^9}, 3.8435739364407797`*^9, {
+   3.843573991678022*^9, 3.843574035030383*^9}, {3.8435757134538193`*^9, 
+   3.8435757165948753`*^9}, {3.843575780199952*^9, 3.843575782645156*^9}, {
+   3.843575817717843*^9, 3.843575819809267*^9}, {3.8435758926085033`*^9, 
+   3.843575894751239*^9}, 
+   3.843576089713011*^9},ExpressionUUID->"dced503d-54ea-40d3-8d14-\
+a0b062bb98d7"]
+},
+WindowSize->{825, 992},
+WindowMargins->{{Automatic, 239}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Mac OS X x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d1b2f656-4797-4fef-b724-cac8461e8aba"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 311, 8, 71, "Input",ExpressionUUID->"c8c3c7ee-faac-4bc5-9b46-07464bec26c6"],
+Cell[872, 30, 51344, 1194, 4449, "Input",ExpressionUUID->"32144748-9a16-4c45-b620-b549bedfd3d6"],
+Cell[52219, 1226, 659, 10, 30, "Input",ExpressionUUID->"dced503d-54ea-40d3-8d14-a0b062bb98d7"]
+}
+]
+*)
+

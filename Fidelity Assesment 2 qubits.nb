@@ -1,0 +1,282 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10241,        274]
+NotebookOptionsPosition[      9773,        258]
+NotebookOutlinePosition[     10196,        275]
+CellTagsIndexPosition[     10153,        272]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"Fidelity", " ", "Assesment", " ", "2", " ", "qubits"}], ";"}], 
+  "Title"]], "Input",
+ CellChangeTimes->{{3.843434833492567*^9, 
+  3.8434348425543957`*^9}},ExpressionUUID->"23afbdef-8289-410e-ab4e-\
+73aed66fc89f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FChi", "[", 
+     RowBox[{"Chiid_", ",", "Chirec_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Numerator", ",", "Denominator"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"Numerator", "=", 
+        RowBox[{"Tr", "[", 
+         RowBox[{"Chirec", ".", 
+          RowBox[{"ConjugateTranspose", "[", "Chiid", "]"}]}], "]"}]}], ";", 
+       RowBox[{"Denominator", "=", 
+        RowBox[{"\[Sqrt]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Tr", "[", 
+            RowBox[{"Chirec", ".", 
+             RowBox[{"ConjugateTranspose", "[", "Chirec", "]"}]}], "]"}], " ", 
+           RowBox[{"Tr", "[", 
+            RowBox[{"Chiid", ".", 
+             RowBox[{"ConjugateTranspose", "[", "Chiid", "]"}]}], "]"}]}], 
+          ")"}]}]}], ";", 
+       FractionBox["Numerator", "Denominator"]}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"CalculateFChi2qubits", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "Projectors_", ",", "States_", ",", 
+       "AI_", ",", "Gate_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"Chi", ",", "RecGate", ",", "FidelityChi", ",", "idealChi"}], 
+        "}"}], ",", "\n", 
+       RowBox[{
+        RowBox[{"Chi", "=", 
+         RowBox[{"CalculateChi2qubits", "[", 
+          RowBox[{"Projectors", ",", "States", ",", "AI", ",", "Gate"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"idealChi", "=", 
+         RowBox[{"CalculateChi2qubits", "[", 
+          RowBox[{
+          "Pideal2qubits", ",", "Sideal2qubits", ",", "AI", ",", "Gate"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"FidelityChi", "=", 
+         RowBox[{"N", "[", 
+          RowBox[{"FChi", "[", 
+           RowBox[{"idealChi", ",", "Chi"}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Simplify", "[", "FidelityChi", "]"}]}]}], "]"}]}], ";"}], 
+   "\n"}], "Code"], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"LogPlotResults", "[", 
+     RowBox[{
+     "ProbabilitiesFidelities_", ",", "featureNumber_", ",", "String_"}], 
+     "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "Plot", "}"}], ",", 
+      RowBox[{
+       RowBox[{"Plot", "=", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Log", "[", 
+              RowBox[{"ProbabilitiesFidelities", "\[LeftDoubleBracket]", 
+               RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "]"}], ",", 
+             RowBox[{"Log", "[", 
+              RowBox[{"1", "-", 
+               RowBox[{"ProbabilitiesFidelities", "\[LeftDoubleBracket]", 
+                RowBox[{"i", ",", "featureNumber"}], 
+                "\[RightDoubleBracket]"}]}], "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], 
+            "}"}]}], "]"}], "]"}]}], ";", 
+       RowBox[{"Show", "[", 
+        RowBox[{"Plot", ",", 
+         RowBox[{"AxesLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"HoldForm", "[", 
+             RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}],
+              "]"}], ",", 
+            RowBox[{"HoldForm", "[", 
+             RowBox[{"Re", "[", "String", "]"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"PlotLabel", "\[Rule]", 
+          RowBox[{"HoldForm", "[", 
+           RowBox[{"Distribution", " ", "of", " ", 
+            RowBox[{"Re", "[", "String", "]"}]}], "]"}]}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"GrayLevel", "[", "0", "]"}], "}"}]}]}], "]"}]}]}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PlotResults", "[", 
+     RowBox[{
+     "ProbabilitiesFidelities_", ",", "featureNumber_", ",", "String_"}], 
+     "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "Plot", "}"}], ",", 
+      RowBox[{
+       RowBox[{"Plot", "=", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"ProbabilitiesFidelities", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"ProbabilitiesFidelities", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "featureNumber"}], 
+              "\[RightDoubleBracket]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "ProbabilitiesFidelities", "]"}]}], 
+            "}"}]}], "]"}], "]"}]}], ";", 
+       RowBox[{"Show", "[", 
+        RowBox[{"Plot", ",", 
+         RowBox[{"AxesLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"HoldForm", "[", 
+             RowBox[{"Probability", " ", "of", " ", "correct", " ", "input"}],
+              "]"}], ",", 
+            RowBox[{"HoldForm", "[", 
+             RowBox[{"Re", "[", "String", "]"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"PlotLabel", "\[Rule]", 
+          RowBox[{"HoldForm", "[", 
+           RowBox[{"Distribution", " ", "of", " ", 
+            RowBox[{"Re", "[", "String", "]"}]}], "]"}]}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"GrayLevel", "[", "0", "]"}], "}"}]}]}], "]"}]}]}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PlotResults3", "[", 
+    RowBox[{
+    "ProbabilitiesFidelitiesInputError_", ",", 
+     "ProbabilitiesFidelitiesMeasurementError_", ",", 
+     "ProbabilitiesFidelitiesInputandMeasurementError_", ",", 
+     "featureNumber_", ",", "featureNumberMI_", ",", "String_"}], "]"}], ":=", 
+   RowBox[{"Show", "[", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Labeled", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+             "ProbabilitiesFidelitiesInputError", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+             RowBox[{
+             "ProbabilitiesFidelitiesInputError", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "featureNumber"}], 
+              "\[RightDoubleBracket]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{
+             "Length", "[", "ProbabilitiesFidelitiesInputError", "]"}]}], 
+            "}"}]}], "]"}], ",", "\"\<Input Error\>\""}], "]"}], ",", 
+       RowBox[{"Labeled", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+             "ProbabilitiesFidelitiesMeasurementError", 
+              "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+             RowBox[{
+             "ProbabilitiesFidelitiesMeasurementError", 
+              "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "featureNumber"}], 
+              "\[RightDoubleBracket]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{
+             "Length", "[", "ProbabilitiesFidelitiesMeasurementError", 
+              "]"}]}], "}"}]}], "]"}], ",", "\"\<Measurement Error\>\""}], 
+        "]"}], ",", 
+       RowBox[{"Labeled", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+             "ProbabilitiesFidelitiesInputandMeasurementError", 
+              "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+             RowBox[{
+             "ProbabilitiesFidelitiesInputandMeasurementError", 
+              "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "featureNumberMI"}], 
+              "\[RightDoubleBracket]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{
+             "Length", "[", "ProbabilitiesFidelitiesInputandMeasurementError",
+               "]"}]}], "}"}]}], "]"}], ",", 
+         "\"\<Measurement and Input Error\>\""}], "]"}]}], "}"}], "]"}], 
+    "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8434348707701073`*^9, 3.8434349552327843`*^9}, {
+   3.843435026255968*^9, 3.843435030318904*^9}, {3.843470824703615*^9, 
+   3.84347083098507*^9}, 3.843479877407304*^9, {3.843576339752911*^9, 
+   3.843576345691066*^9}, 3.843583187615539*^9},
+ CellLabel->
+  "In[1070]:=",ExpressionUUID->"ba327d31-87ea-4826-91d1-bd3f76d920c9"]
+},
+WindowSize->{521, 991},
+WindowMargins->{{Automatic, 427}, {Automatic, 0}},
+Magnification:>0.75 Inherited,
+FrontEndVersion->"12.3 for Mac OS X x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"baf3161e-c7fb-4714-bf9c-e42722d033bc"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 261, 7, 54, "Input",ExpressionUUID->"23afbdef-8289-410e-ab4e-73aed66fc89f"],
+Cell[822, 29, 8947, 227, 940, "Input",ExpressionUUID->"ba327d31-87ea-4826-91d1-bd3f76d920c9"]
+}
+]
+*)
+

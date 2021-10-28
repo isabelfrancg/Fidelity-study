@@ -1,0 +1,3283 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    144368,       3275]
+NotebookOptionsPosition[    143817,       3259]
+NotebookOutlinePosition[    144207,       3275]
+CellTagsIndexPosition[    144164,       3272]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\[IndentingNewLine]", "Title"], 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"Probability", " ", "Set", " ", "Fidelities"}], ";"}], "Title"], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Probability", " ", "distributions", " ", "to", " ", "assess", " ", 
+     "fidelity"}], "*)"}], 
+   StyleBox["\[IndentingNewLine]", "Chapter"], "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"Distribution", " ", "of", " ", "2", " ", "probabilities"}], 
+     ";"}], "Chapter"], 
+   StyleBox["\[IndentingNewLine]", "Title"], 
+   StyleBox["\[IndentingNewLine]", "Title"], 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput2probabilities1qubit", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", 
+          RowBox[{"probability1", " ", "Error"}]}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi1qubit", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "Pideal", ",", "StatesError", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   StyleBox["\[IndentingNewLine]", "Title"], 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput2probabilities2qubits", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"probPermutations", ",", "chi", ",", "StatesError"}], "}"}], 
+       ",", 
+       RowBox[{
+        RowBox[{
+        "probPermutations", "=", "GenerateRamdonSetProbabilities2Low"}], ";", 
+        
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", 
+          RowBox[{"probability1", " ", "Error"}]}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi2qubits", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "Pideal", ",", "StatesError", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}], 
+   StyleBox["\[IndentingNewLine]", "Title"], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityMeasurement2probabilities1qubit", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", 
+          RowBox[{"probability1", " ", "Error"}]}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi1qubit", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityMeasurement2probabilities2qubits", 
+      "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{
+        "probPermutations", "=", "GenerateRamdonSetProbabilities2Low"}], ";", 
+        
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", 
+          RowBox[{"probability1", " ", "Error"}]}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi2qubits", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInputMeasurement2probabilities1qubit",
+       "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesErrorInput", ",", "StatesErrorMeasurement", ",", 
+         "StatesError1", ",", "StatesErrorM1"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesErrorInput", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", 
+          RowBox[{"probability1", " ", "Error"}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"StatesErrorMeasurement", "=", 
+         RowBox[{
+          RowBox[{"probabilityM0", " ", "Sideal"}], "+", 
+          RowBox[{"probabilityM1", " ", "Error"}]}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM0", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM1", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "2"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                  "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInputMeasurement2probabilities2qubits"\
+, "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesErrorInput", ",", "StatesErrorMeasurement", ",", 
+         "StatesError1", ",", "StatesErrorM1"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{
+        "probPermutations", "=", "GenerateRamdonSetProbabilities2Low"}], ";", 
+        
+        RowBox[{"StatesErrorInput", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", 
+          RowBox[{"probability1", " ", "Error"}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"StatesErrorMeasurement", "=", 
+         RowBox[{
+          RowBox[{"probabilityM0", " ", "Sideal"}], "+", 
+          RowBox[{"probabilityM1", " ", "Error"}]}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM0", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM1", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "2"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi2qubits", "[", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                  "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"Distribution", " ", "of", " ", "4", " ", "probabilities"}], 
+     ";"}], "Chapter"], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput4probabilities1qubit", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", "Error"}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability2", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "4"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi1qubit", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "Pideal", ",", "StatesError", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityMeasurement4probabilities1qubit", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", "Error"}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability2", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "4"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi1qubit", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInputMeasurement4probabilities1qubit",
+       "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "ErrorInput_",
+        ",", "ErrorMeasurement_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError", ",", "StatesErrorInput", ",", 
+         "StatesErrorMeasurement"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesErrorInput", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", "ErrorInput"}]}], ";",
+         "\[IndentingNewLine]", 
+        RowBox[{"StatesErrorMeasurement", "=", 
+         RowBox[{
+          RowBox[{"probabilityM0", " ", "Sideal"}], "+", 
+          "ErrorMeasurement"}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM0", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM1", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"probability0", "+", "probabilityM0"}], ")"}], "/", 
+             "2"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                  "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput4probabilities2qubits", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", "Error"}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability2", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "4"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi2qubits", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "Pideal", ",", "StatesError", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityMeasurement4probabilities2qubits", 
+      "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", "Error"}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability2", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "4"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi2qubits", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInputMeasurement4probabilities2qubitS"\
+, "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "ErrorInput_",
+        ",", "ErrorMeasurement_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError", ",", "StatesErrorInput", ",", 
+         "StatesErrorMeasurement"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesErrorInput", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", "ErrorInput"}]}], ";",
+         "\[IndentingNewLine]", 
+        RowBox[{"StatesErrorMeasurement", "=", 
+         RowBox[{
+          RowBox[{"probabilityM0", " ", "Sideal"}], "+", 
+          "ErrorMeasurement"}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM0", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM1", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"probability0", "+", "probabilityM0"}], ")"}], "/", 
+             "2"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi2qubits", "[", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                  "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInputMeasurement4probabilities1qubit",
+       "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesErrorInput", ",", "StatesErrorMeasurement"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesErrorInput", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", 
+          RowBox[{"probability1", " ", "Error"}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"StatesErrorMeasurement", "=", 
+         RowBox[{
+          RowBox[{"probabilityM0", " ", "Sideal"}], "+", 
+          RowBox[{"probabilityM1", " ", "Error"}]}]}], ";", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM0", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM1", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM2", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM3", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                  "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"8", " ", "probabilities"}], ";"}], "Chapter"], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput8probabilities1qubit", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "Error"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "Pideal", ",", "StatesError", 
+                  ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+           ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityMeasurement8probabilities1qubit", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "Error"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                  ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+           ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInputandMeasurement8probabilities1qubi\
+t", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "ErrorInput_",
+        ",", "ErrorMeasurement_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesErrorInput", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "ErrorInput"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"StatesErrorMeasurement", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probabilityM0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "ErrorMeasurement"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM0", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM1", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM2", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM3", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM4", "=", 
+            RowBox[{
+            "StatesErrorM3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM5", "=", 
+            RowBox[{
+            "StatesErrorM3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM6", "=", 
+            RowBox[{
+            "StatesErrorM4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM7", "=", 
+            RowBox[{
+            "StatesErrorM4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "8"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                  "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput8probabilities2qubits", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesErrorInput", ",", "StatesErrorMeasurement"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "Error"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi2qubits", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "Pideal", ",", "StatesError", 
+                  ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+           ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityMeasurement8probabilities2qubits", 
+      "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesErrorInput", ",", "StatesErrorMeasurement"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "Error"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi2qubits", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                  ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+           ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInputandMeasurement8probabilities2qubi\
+ts", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "ErrorInput_",
+        ",", "ErrorMeasurement_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesErrorInput", ",", "StatesErrorMeasurement"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities2"}], 
+        ";", 
+        RowBox[{"StatesErrorInput", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "ErrorInput"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"StatesErrorMeasurement", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probabilityM0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "ErrorMeasurement"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM0", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM1", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM2", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM3", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM4", "=", 
+            RowBox[{
+            "StatesErrorM3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM5", "=", 
+            RowBox[{
+            "StatesErrorM3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM6", "=", 
+            RowBox[{
+            "StatesErrorM4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM7", "=", 
+            RowBox[{
+            "StatesErrorM4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "8"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi2qubits", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                  "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"12", "probabilities"}], ";"}], "Chapter"], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput12probabilities1qubit", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability8", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability12", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "Error"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability8", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability9", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability10", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability11", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability12", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability13", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability14", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability15", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "Pideal", ",", "StatesError", 
+                  ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+           ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityMeasurement12probabilities1qubit", 
+      "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability8", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability12", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "Error"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability8", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability9", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability10", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability11", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability12", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability13", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability14", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability15", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                  ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+           ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInputandMeasurement12probabilities1qub\
+it", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "ErrorInput_",
+        ",", "ErrorMeasurement_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesErrorInput", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "ErrorInput"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"StatesErrorMeasurement", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probabilityM0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM2", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probabilityM6", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "ErrorMeasurement"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM0", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM1", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM2", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM3", "=", 
+            RowBox[{
+            "StatesErrorM1", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM4", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM5", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM6", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM7", "=", 
+            RowBox[{
+            "StatesErrorM2", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability8", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability9", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability10", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability11", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM8", "=", 
+            RowBox[{
+            "StatesErrorM3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM9", "=", 
+            RowBox[{
+            "StatesErrorM3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM10", "=", 
+            RowBox[{
+            "StatesErrorM3", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM11", "=", 
+            RowBox[{
+            "StatesErrorM3", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"StatesErrorM4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability12", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability13", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability14", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability15", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM12", "=", 
+            RowBox[{
+            "StatesErrorM4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM13", "=", 
+            RowBox[{
+            "StatesErrorM4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probabilityM14", "=", 
+            RowBox[{
+            "StatesErrorM4", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probabilityM15", "=", 
+            RowBox[{
+            "StatesErrorM4", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesErrorM4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "8"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi1qubit", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                  "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput12probabilities2qubits", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability8", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability12", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "Error"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability8", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability9", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability10", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability11", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability12", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability13", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability14", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability15", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi2qubits", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "Pideal", ",", "StatesError", 
+                  ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+           ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityMeasurement12probabilities2qubits", 
+      "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}], 
+        ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"probability0", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability4", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability8", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+            RowBox[{"probability12", " ", 
+             RowBox[{"Sideal", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+          "Error"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StatesError1", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability0", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{
+            "StatesError1", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError2", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{
+            "StatesError2", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError3", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability8", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability9", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability10", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability11", "=", 
+            RowBox[{
+            "StatesError3", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"StatesError4", "=", 
+            RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability12", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability13", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"probability14", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "3", 
+             "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability15", "=", 
+            RowBox[{
+            "StatesError4", "\[LeftDoubleBracket]", "4", 
+             "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Average", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "StatesError1", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError2", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError3", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "StatesError4", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "/", "4"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"probFidelity", ",", 
+             RowBox[{"{", 
+              RowBox[{"Average", ",", 
+               RowBox[{"N", "[", 
+                RowBox[{"CalculateFChi2qubits", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                  ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+           ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"-", " ", "Unused"}]}]}]}]}]}]}], " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"code", " ", "--"}], "--"}], "--"}], "--"}], "--"}], 
+          "--"}], "--"}], "--"}], "--"}]}], "-"}], " ", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "FindASetOfProbabilitiesAndFidelityInputandMeasurement12probabilities2qu\
+bits", "[", 
+       RowBox[{
+       "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", 
+        "ErrorInput_", ",", "ErrorMeasurement_"}], "]"}], ":=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+          "StatesError"}], "}"}], ",", 
+        RowBox[{
+         RowBox[{"probFidelity", "=", 
+          RowBox[{"{", "}"}]}], ";", 
+         RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities4"}],
+          ";", 
+         RowBox[{"StatesErrorInput", "=", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"probability0", " ", 
+              RowBox[{"Sideal", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+             RowBox[{"probability2", " ", 
+              RowBox[{"Sideal", "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+             RowBox[{"probability4", " ", 
+              RowBox[{"Sideal", "[", 
+               RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+             RowBox[{"probability6", " ", 
+              RowBox[{"Sideal", "[", 
+               RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+           "ErrorInput"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"StatesErrorMeasurement", "=", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"probabilityM0", " ", 
+              RowBox[{"Sideal", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+             RowBox[{"probabilityM2", " ", 
+              RowBox[{"Sideal", "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+             RowBox[{"probabilityM4", " ", 
+              RowBox[{"Sideal", "[", 
+               RowBox[{"[", "3", "]"}], "]"}]}], ",", " ", 
+             RowBox[{"probabilityM6", " ", 
+              RowBox[{"Sideal", "[", 
+               RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}], "+", " ", 
+           "ErrorMeasurement"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Do", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"StatesError1", "=", 
+             RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"StatesErrorM1", "=", 
+             RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"probability0", "=", 
+             RowBox[{
+             "StatesError1", "\[LeftDoubleBracket]", "1", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability1", "=", 
+             RowBox[{
+             "StatesError1", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probability2", "=", 
+             RowBox[{
+             "StatesError1", "\[LeftDoubleBracket]", "3", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability3", "=", 
+             RowBox[{
+             "StatesError1", "\[LeftDoubleBracket]", "4", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probabilityM0", "=", 
+             RowBox[{
+             "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probabilityM1", "=", 
+             RowBox[{
+             "StatesErrorM1", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probabilityM2", "=", 
+             RowBox[{
+             "StatesErrorM1", "\[LeftDoubleBracket]", "3", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probabilityM3", "=", 
+             RowBox[{
+             "StatesErrorM1", "\[LeftDoubleBracket]", "4", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"StatesError2", "=", 
+             RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"StatesErrorM2", "=", 
+             RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"probability4", "=", 
+             RowBox[{
+             "StatesError2", "\[LeftDoubleBracket]", "1", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability5", "=", 
+             RowBox[{
+             "StatesError2", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probability6", "=", 
+             RowBox[{
+             "StatesError2", "\[LeftDoubleBracket]", "3", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability7", "=", 
+             RowBox[{
+             "StatesError2", "\[LeftDoubleBracket]", "4", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probabilityM4", "=", 
+             RowBox[{
+             "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probabilityM5", "=", 
+             RowBox[{
+             "StatesErrorM2", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probabilityM6", "=", 
+             RowBox[{
+             "StatesErrorM2", "\[LeftDoubleBracket]", "3", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probabilityM7", "=", 
+             RowBox[{
+             "StatesErrorM2", "\[LeftDoubleBracket]", "4", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"StatesError3", "=", 
+             RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"StatesErrorM3", "=", 
+             RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"probability8", "=", 
+             RowBox[{
+             "StatesError3", "\[LeftDoubleBracket]", "1", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability9", "=", 
+             RowBox[{
+             "StatesError3", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probability10", "=", 
+             RowBox[{
+             "StatesError3", "\[LeftDoubleBracket]", "3", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability11", "=", 
+             RowBox[{
+             "StatesError3", "\[LeftDoubleBracket]", "4", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probabilityM8", "=", 
+             RowBox[{
+             "StatesErrorM3", "\[LeftDoubleBracket]", "1", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probabilityM9", "=", 
+             RowBox[{
+             "StatesErrorM3", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probabilityM10", "=", 
+             RowBox[{
+             "StatesErrorM3", "\[LeftDoubleBracket]", "3", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probabilityM11", "=", 
+             RowBox[{
+             "StatesErrorM3", "\[LeftDoubleBracket]", "4", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"StatesError4", "=", 
+             RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"StatesErrorM4", "=", 
+             RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"probability12", "=", 
+             RowBox[{
+             "StatesError4", "\[LeftDoubleBracket]", "1", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability13", "=", 
+             RowBox[{
+             "StatesError4", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probability14", "=", 
+             RowBox[{
+             "StatesError4", "\[LeftDoubleBracket]", "3", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability15", "=", 
+             RowBox[{
+             "StatesError4", "\[LeftDoubleBracket]", "4", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probabilityM12", "=", 
+             RowBox[{
+             "StatesErrorM4", "\[LeftDoubleBracket]", "1", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probability13", "=", 
+             RowBox[{
+             "StatesErrorM4", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"probabilityM14", "=", 
+             RowBox[{
+             "StatesErrorM4", "\[LeftDoubleBracket]", "3", 
+              "\[RightDoubleBracket]"}]}], ";", 
+            RowBox[{"probabilityM15", "=", 
+             RowBox[{
+             "StatesErrorM4", "\[LeftDoubleBracket]", "4", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Average", "=", " ", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                "StatesError1", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "StatesError2", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "StatesError3", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "StatesError4", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "StatesErrorM1", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "StatesErrorM2", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "StatesErrorM3", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "StatesErrorM4", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}]}], ")"}], "/", "8"}]}], ";", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"probFidelity", ",", 
+              RowBox[{"{", 
+               RowBox[{"Average", ",", 
+                RowBox[{"N", "[", 
+                 RowBox[{"CalculateFChi2qubits", "[", "\[IndentingNewLine]", 
+                  RowBox[{
+                  "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",",
+                    "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], 
+                 "]"}]}], "}"}]}], "]"}], ";"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+          "]"}], ";", "probFidelity"}]}], "]"}]}], ";"}], "*)"}]}]}]], "Input",\
+
+ CellChangeTimes->{{3.8433987231441307`*^9, 3.843398728584765*^9}, {
+   3.843399779724183*^9, 3.8433997805809402`*^9}, {3.8433999593878736`*^9, 
+   3.8433999597811947`*^9}, {3.843400000803279*^9, 3.843400025645566*^9}, {
+   3.843400057908037*^9, 3.8434000590361147`*^9}, {3.843400089466091*^9, 
+   3.843400174301004*^9}, {3.843400215244508*^9, 3.8434002532117367`*^9}, {
+   3.8434012173610077`*^9, 3.84340123949422*^9}, {3.843402412856917*^9, 
+   3.8434024381204443`*^9}, {3.8434024996311073`*^9, 3.843402527910163*^9}, {
+   3.84340256317876*^9, 3.843402633422515*^9}, {3.843404778977909*^9, 
+   3.843404779301282*^9}, {3.8434056726381273`*^9, 3.8434056834577723`*^9}, {
+   3.843405740341359*^9, 3.8434057528020983`*^9}, {3.843408721102928*^9, 
+   3.843408744510914*^9}, {3.843409101396517*^9, 3.8434091421117983`*^9}, {
+   3.843409252579074*^9, 3.843409252885255*^9}, {3.8434092872600327`*^9, 
+   3.843409287424045*^9}, {3.843409436826922*^9, 3.843409450893672*^9}, {
+   3.843409603328508*^9, 3.8434096077826443`*^9}, {3.843409646403963*^9, 
+   3.8434098391733103`*^9}, {3.8434100134996567`*^9, 3.843410027375791*^9}, {
+   3.843410089468149*^9, 3.843410089616469*^9}, {3.843410133213388*^9, 
+   3.8434101639565277`*^9}, {3.843410470588051*^9, 3.843410492744528*^9}, {
+   3.843410524105178*^9, 3.843410580605748*^9}, {3.843410611024613*^9, 
+   3.843410630104856*^9}, {3.8434107158999853`*^9, 3.8434107607408257`*^9}, {
+   3.843411407570876*^9, 3.8434114461934767`*^9}, {3.8434123159003487`*^9, 
+   3.843412327763825*^9}, {3.843412438947463*^9, 3.843412445946535*^9}, {
+   3.843412513558402*^9, 3.843412632909252*^9}, 3.8434127462640743`*^9, {
+   3.843412778070347*^9, 3.8434128230076437`*^9}, {3.8434128796279087`*^9, 
+   3.8434131175594683`*^9}, {3.8434131720651484`*^9, 3.843413180802442*^9}, {
+   3.8434162329261303`*^9, 3.843416238202345*^9}, {3.843416319922062*^9, 
+   3.84341633318959*^9}, {3.843416651070174*^9, 3.84341665258497*^9}, 
+   3.843417280744523*^9, {3.8434173407990713`*^9, 3.843417382189536*^9}, {
+   3.8434174624049377`*^9, 3.843417484586673*^9}, {3.8434175239541063`*^9, 
+   3.843417689532897*^9}, {3.8434177243427258`*^9, 3.843417804821947*^9}, {
+   3.8434178372728558`*^9, 3.843417908178437*^9}, 3.843418688006975*^9, {
+   3.843418776716943*^9, 3.8434187864958477`*^9}, {3.84341893333832*^9, 
+   3.843418946596747*^9}, {3.8434190033869762`*^9, 3.843419198614884*^9}, {
+   3.843419235426214*^9, 3.843419332210799*^9}, {3.84341997992367*^9, 
+   3.843419984303707*^9}, {3.8434200548687773`*^9, 3.8434200803939457`*^9}, {
+   3.843420128345586*^9, 3.843420142604183*^9}, {3.843420176179933*^9, 
+   3.8434204110552893`*^9}, {3.843420442520022*^9, 3.8434204629693203`*^9}, {
+   3.843420928984227*^9, 3.843420935084499*^9}, {3.843421914284362*^9, 
+   3.843421930078837*^9}, {3.843421991619237*^9, 3.84342199831643*^9}, 
+   3.8434289186252623`*^9, {3.8434316061104517`*^9, 3.843431617275154*^9}, {
+   3.843431653484687*^9, 3.843431657952961*^9}, {3.843431839973238*^9, 
+   3.8434318439630213`*^9}, {3.843431931006976*^9, 3.843431938075584*^9}, 
+   3.843431970753261*^9, {3.8434322573061123`*^9, 3.8434322595989428`*^9}, {
+   3.843432411269127*^9, 3.843432426985471*^9}, {3.843432521837264*^9, 
+   3.8434326221701937`*^9}, {3.8434326825892487`*^9, 
+   3.8434326886067944`*^9}, {3.8434703080033617`*^9, 3.84347031359909*^9}, {
+   3.843470344086781*^9, 3.843470404222638*^9}, {3.843480216073141*^9, 
+   3.843480232367784*^9}, {3.8434802727944937`*^9, 3.8434802770460663`*^9}, 
+   3.843480323899871*^9, {3.8434803615467443`*^9, 3.84348036187267*^9}, {
+   3.843480577149881*^9, 3.843480610847713*^9}, {3.8434812279444923`*^9, 
+   3.843481234608811*^9}, {3.843481607492487*^9, 3.843481609252195*^9}, 
+   3.8434820298568077`*^9, {3.843482137768983*^9, 3.843482159199785*^9}, {
+   3.8434830934863853`*^9, 3.8434831010908546`*^9}, {3.8434839697675753`*^9, 
+   3.843483983072933*^9}, {3.84349986305826*^9, 3.843499954185933*^9}, {
+   3.843501708553515*^9, 3.843501744622252*^9}, {3.843502336403427*^9, 
+   3.8435023715723867`*^9}, {3.8435025853541603`*^9, 3.843502593931822*^9}, 
+   3.843583783364259*^9, {3.84444621319195*^9, 3.8444462333668537`*^9}, 
+   3.844446456729224*^9, {3.844446525293963*^9, 3.844446576761639*^9}, {
+   3.8444470206659946`*^9, 3.844447070198559*^9}, {3.844447329142215*^9, 
+   3.84444735549304*^9}, {3.844447481235189*^9, 3.844447556324511*^9}, {
+   3.84444766435635*^9, 3.8444477151339207`*^9}, {3.844447751766926*^9, 
+   3.844447752117577*^9}},ExpressionUUID->"e1441ea9-8611-4f08-a9e4-\
+e68c468da335"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    StyleBox[
+     RowBox[{"16", "probabilities"}], "Chapter"], 
+    StyleBox[";", "Chapter"], 
+    StyleBox["\[IndentingNewLine]", "Chapter"], 
+    StyleBox["\[IndentingNewLine]", "Chapter"], "\[IndentingNewLine]", 
+    StyleBox["\[IndentingNewLine]", "Chapter"], 
+    RowBox[{
+     RowBox[{
+     "FindASetOfProbabilitiesAndFidelityInput16probabilities2qubits", "[", 
+      RowBox[{
+      "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+         "StatesError"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"probFidelity", "=", 
+         RowBox[{"{", "}"}]}], ";", 
+        RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities16"}],
+         ";", 
+        RowBox[{"StatesError", "=", 
+         RowBox[{
+          RowBox[{"probability0", " ", "Sideal"}], "+", " ", "Error"}]}], ";",
+         "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"probability0", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability1", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability2", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability3", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "4"}], "\[RightDoubleBracket]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability4", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "5"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability5", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "6"}], "\[RightDoubleBracket]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability6", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "7"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability7", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "8"}], "\[RightDoubleBracket]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability8", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "9"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability9", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "10"}], "\[RightDoubleBracket]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability10", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "11"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability11", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "12"}], "\[RightDoubleBracket]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability12", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "13"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability13", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "14"}], "\[RightDoubleBracket]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"probability14", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "15"}], "\[RightDoubleBracket]"}]}], ";", 
+           RowBox[{"probability15", "=", 
+            RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "16"}], "\[RightDoubleBracket]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{
+             "probPermutations", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"N", "[", 
+              RowBox[{"CalculateFChi1qubit", "[", 
+               RowBox[{
+               "Pideal", ",", "Sideal", ",", "StatesError", ",", "Sideal", 
+                ",", "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], 
+         "]"}], ";", "probPermutations"}]}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.843483996394012*^9, 3.8434839995595016`*^9}, {
+  3.843484285194002*^9, 3.843484475677876*^9}, {3.8434852629448767`*^9, 
+  3.843485263313716*^9}, {3.8435025965959578`*^9, 3.843502596746812*^9}, {
+  3.844447652813609*^9, 
+  3.844447660909424*^9}},ExpressionUUID->"4f19b8bd-2989-4a26-a5cf-\
+33c616abdaf8"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "FindASetOfProbabilitiesAndFidelityMeasurement16probabilities2qubits", 
+     "[", 
+     RowBox[{
+     "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+     "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+        "StatesError"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"probFidelity", "=", 
+        RowBox[{"{", "}"}]}], ";", 
+       RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities16"}], 
+       ";", 
+       RowBox[{"StatesError", "=", 
+        RowBox[{
+         RowBox[{"probability0", " ", "Sideal"}], "+", " ", "Error"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"probability0", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability1", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability2", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability3", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "4"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability4", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "5"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability5", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "6"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability6", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "7"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability7", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "8"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability8", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "9"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability9", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "10"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability10", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "11"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability11", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "12"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability12", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "13"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability13", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "14"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability14", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "15"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability15", "=", 
+           RowBox[{"probPermutations", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "16"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{
+            RowBox[{
+            "probPermutations", "\[LeftDoubleBracket]", "i", 
+             "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"N", "[", 
+             RowBox[{"CalculateFChi1qubit", "[", 
+              RowBox[{
+              "Pideal", ",", "Sideal", ",", "Sideal", ",", "StatesError", ",",
+                "AI", ",", "Gate"}], "]"}], "]"}]}], "]"}], ";"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], "]"}],
+        ";", "probPermutations"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "FindASetOfProbabilitiesAndFidelityInputMeasurement16probabilities2qubits"\
+, "[", 
+     RowBox[{
+     "Pideal_", ",", "Sideal_", ",", "AI_", ",", "Gate_", ",", "Error_"}], 
+     "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "probFidelity", ",", "probPermutations", ",", "chi", ",", 
+        "StatesErrorInput", ",", "StatesErrorMeasurement", ",", 
+        "StatesError1", ",", "StatesErrorM1"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"probFidelity", "=", 
+        RowBox[{"{", "}"}]}], ";", 
+       RowBox[{"probPermutations", "=", "GenerateRamdonSetProbabilities16"}], 
+       ";", 
+       RowBox[{"StatesErrorInput", "=", 
+        RowBox[{
+         RowBox[{"probability0", " ", "Sideal"}], "+", " ", "Error"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"StatesErrorMeasurement", "=", 
+        RowBox[{
+         RowBox[{"probabilityM0", " ", "Sideal"}], "+", "Error"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"StatesError1", "=", 
+           RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"StatesErrorM1", "=", 
+           RowBox[{"RandomChoice", "[", "probPermutations", "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability0", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability1", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability2", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability3", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "4"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability4", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "5"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability5", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "6"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability6", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "7"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability7", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "8"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability8", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "9"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability9", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "10"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability10", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "11"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability11", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "12"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability12", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "13"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability13", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "14"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probability14", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "15"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probability15", "=", 
+           RowBox[{"StatesError1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "16"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probabilityM0", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probabilityM1", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probabilityM2", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probabilityM3", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "4"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probabilityM4", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "5"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probabilityM5", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "6"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probabilityM6", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "7"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probabilityM7", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "8"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probabilityM8", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "9"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probabilityM9", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "10"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probabilityM10", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "11"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probabilityM11", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "12"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probabilityM12", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "13"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probabilityM13", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "14"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"probabilityM14", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "15"}], "\[RightDoubleBracket]"}]}], ";", 
+          RowBox[{"probabilityM15", "=", 
+           RowBox[{"StatesErrorM1", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "16"}], "\[RightDoubleBracket]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Average", "=", " ", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+              "StatesError1", "\[LeftDoubleBracket]", "1", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{
+              "StatesError2", "\[LeftDoubleBracket]", "1", 
+               "\[RightDoubleBracket]"}]}], ")"}], "/", "2"}]}], ";", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"probFidelity", ",", 
+            RowBox[{"{", 
+             RowBox[{"Average", ",", 
+              RowBox[{"N", "[", 
+               RowBox[{"CalculateFChi2qubits", "[", "\[IndentingNewLine]", 
+                RowBox[{
+                "Pideal", ",", "Sideal", ",", "StatesErrorMeasurement", ",", 
+                 "StatesErrorInput", ",", "AI", ",", "Gate"}], "]"}], "]"}]}],
+              "}"}]}], "]"}], ";"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "probPermutations", "]"}]}], "}"}]}], "]"}],
+        ";", "probFidelity"}]}], "]"}]}], ";"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.8434845276861343`*^9, 3.843484749900202*^9}, {
+  3.8434852557510443`*^9, 3.8434852607229567`*^9}, {3.843502600995584*^9, 
+  3.8435026086675873`*^9}},ExpressionUUID->"5003e745-628a-47e6-8f1d-\
+5065f2f5278d"]
+},
+WindowSize->{718, 992},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Mac OS X x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"75a4136f-ce4f-4b5d-bb73-3be245c2a44a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 124481, 2850, 13869, "Input",ExpressionUUID->"e1441ea9-8611-4f08-a9e4-e68c468da335"],
+Cell[125042, 2872, 5330, 109, 680, "Input",ExpressionUUID->"4f19b8bd-2989-4a26-a5cf-33c616abdaf8"],
+Cell[130375, 2983, 13438, 274, 1522, "Input",ExpressionUUID->"5003e745-628a-47e6-8f1d-5065f2f5278d"]
+}
+]
+*)
+
