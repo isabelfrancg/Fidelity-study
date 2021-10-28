@@ -1,0 +1,493 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19436,        485]
+NotebookOptionsPosition[     18799,        468]
+NotebookOutlinePosition[     19194,        484]
+CellTagsIndexPosition[     19151,        481]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\[IndentingNewLine]", "Title"], 
+  StyleBox["\[IndentingNewLine]", "Title"], 
+  RowBox[{
+   StyleBox[
+    RowBox[{"1", "-", 
+     RowBox[{"qubit", " ", "Bit", " ", "Flip", " ", "Error"}]}], "Title"], 
+   StyleBox[" ", "Chapter"], 
+   StyleBox[";", "Chapter"]}]}]], "Input",
+ CellChangeTimes->{{3.8439545580586357`*^9, 
+  3.843954566169682*^9}},ExpressionUUID->"f5f91c25-a597-41a0-b0ac-\
+6f9ad34779f1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Error", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"#", ".", "State1", ".", 
+       RowBox[{"ConjugateTranspose", "[", "#", "]"}]}], ",", 
+      RowBox[{"#", ".", "State2", ".", 
+       RowBox[{"ConjugateTranspose", "[", "#", "]"}]}], ",", 
+      RowBox[{"#", ".", "State3", ".", 
+       RowBox[{"ConjugateTranspose", "[", "#", "]"}]}], ",", 
+      RowBox[{"#", ".", "State4", ".", 
+       RowBox[{"ConjugateTranspose", "[", "#", "]"}]}]}], "}"}], "&"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Error2", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"#1", ".", "State1", ".", 
+       RowBox[{"ConjugateTranspose", "[", "#1", "]"}]}], ",", 
+      RowBox[{"#2", ".", "State2", ".", 
+       RowBox[{"ConjugateTranspose", "[", "#2", "]"}]}], ",", 
+      RowBox[{"#3", ".", "State3", ".", 
+       RowBox[{"ConjugateTranspose", "[", "#3", "]"}]}], ",", 
+      RowBox[{"#4", ".", "State4", ".", 
+       RowBox[{"ConjugateTranspose", "[", "#4", "]"}]}]}], "}"}], "&"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Error2prob", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"probability1", 
+       RowBox[{"#1", ".", "State1", ".", 
+        RowBox[{"ConjugateTranspose", "[", "#1", "]"}]}]}], ",", 
+      RowBox[{"probability3", " ", 
+       RowBox[{"#2", ".", "State2", ".", 
+        RowBox[{"ConjugateTranspose", "[", "#2", "]"}]}]}], ",", 
+      RowBox[{"probability5", 
+       RowBox[{"#3", ".", "State3", ".", 
+        RowBox[{"ConjugateTranspose", "[", "#3", "]"}]}]}], ",", 
+      RowBox[{"probability7", " ", 
+       RowBox[{"#4", ".", "State4", ".", 
+        RowBox[{"ConjugateTranspose", "[", "#4", "]"}]}]}]}], "}"}], "&"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ErrorM2prob", "=", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"probabilityM1", 
+        RowBox[{"#1", ".", "State1", ".", 
+         RowBox[{"ConjugateTranspose", "[", "#1", "]"}]}]}], ",", 
+       RowBox[{"probabilityM3", " ", 
+        RowBox[{"#2", ".", "State2", ".", 
+         RowBox[{"ConjugateTranspose", "[", "#2", "]"}]}]}], ",", 
+       RowBox[{"probabilityM5", 
+        RowBox[{"#3", ".", "State3", ".", 
+         RowBox[{"ConjugateTranspose", "[", "#3", "]"}]}]}], ",", 
+       RowBox[{"probabilityM7", " ", 
+        RowBox[{"#4", ".", "State4", ".", 
+         RowBox[{"ConjugateTranspose", "[", "#4", "]"}]}]}]}], "}"}], "&"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{
+   "probability0", ",", "probability1", ",", "probability2", ",", 
+    "probability3", ",", "probability4", ",", "probability5", ",", 
+    "probability6", ",", "probability7", ",", "probabilityM1", ",", 
+    "probabilityM2", ",", "probabilityM3", ",", "probabilityM4", ",", 
+    "probabilityM5", ",", "probabilityM6", ",", "probabilityM7"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BitFlipError", "=", 
+   RowBox[{"Error", "[", "X", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"BitFlipError8", "=", 
+   RowBox[{"Error2prob", "[", 
+    RowBox[{"X", ",", "X", ",", "X", ",", "X"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BitFlipErrorM8", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"probabilityM1", " ", "OrthogonalState1"}], ",", " ", 
+     RowBox[{"probabilityM3", " ", "OrthogonalState2"}], ",", " ", 
+     RowBox[{"probabilityM5", " ", "OrthogonalState3"}], ",", " ", 
+     RowBox[{"probabilityM7", " ", "OrthogonalState4"}]}], "}"}]}], 
+  ";"}]}], "Input",
+ CellLabel->
+  "In[2828]:=",ExpressionUUID->"8a4f68f1-db9f-4fe1-86ed-c89ea54e5e66"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"LogPlots1qubit8probabilitiesBitFlipError2", "[", 
+    RowBox[{"Gate_", ",", "title_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"IErrorFidelity", ",", 
+       StyleBox[
+        RowBox[{
+         StyleBox["M", "Code"], "ErrorFidelity"}]], ",", "IMErrorFidelity", 
+       ",", "ErroriFidelity2", ",", "ErrorFidelity2"}], "}"}], ",", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Clear", "[", 
+       RowBox[{
+       "probability0", ",", "probability1", ",", "probability2", ",", 
+        "probability3", ",", "probability4", ",", "probability5", ",", 
+        "probability6", ",", "probability7"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"inputErrorFidelity", "=", 
+       RowBox[{
+       "FindASetOfProbabilitiesAndFidelityInput2probabilities1qubit", 
+        StyleBox["[", "Code"], 
+        StyleBox[
+         RowBox[{
+         "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+          ",", "BitFlipError"}], "Code"], 
+        StyleBox["]", "Code"]}]}], 
+      StyleBox[";", "Code"], 
+      StyleBox["\n", "Code"], 
+      StyleBox["\n", "Code"], 
+      RowBox[{"Clear", "[", 
+       RowBox[{
+       "probability0", ",", "probability1", ",", "probability2", ",", 
+        "probability3", ",", "probability4", ",", "probability5", ",", 
+        "probability6", ",", "probability7"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"inputErrorFidelityScattered", "=", 
+       RowBox[{
+       "FindASetOfProbabilitiesAndFidelityInput8probabilities1qubit", 
+        StyleBox["[", "Code"], 
+        StyleBox[
+         RowBox[{
+         "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+          ",", "BitFlipError8"}], "Code"], 
+        StyleBox["]", "Code"]}]}], 
+      StyleBox[";", "Code"], 
+      StyleBox["\n", "Code"], 
+      StyleBox["\n", "Code"], 
+      RowBox[{"Clear", "[", 
+       RowBox[{
+       "probability0", ",", "probability1", ",", "probability2", ",", 
+        "probability3", ",", "probability4", ",", "probability5", ",", 
+        "probability6", ",", "probability7", ",", "probabilityM0", ",", 
+        "probabilityM1", ",", "probabilityM2", ",", "probabilityM3", ",", 
+        "probabilityM4", ",", "probabilityM5", ",", "probabilityM6", ",", 
+        "probabilityM7"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"measurementErrorFidelity", "=", 
+       RowBox[{
+       "FindASetOfProbabilitiesAndFidelityMeasurement2probabilities1qubit", 
+        StyleBox["[", "Code"], 
+        StyleBox[
+         RowBox[{
+         "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+          ",", "BitFlipError"}], "Code"], 
+        StyleBox["]", "Code"]}]}], 
+      StyleBox[";", "Code"], 
+      StyleBox["\n", "Code"], 
+      StyleBox["\n", "Code"], 
+      RowBox[{"Clear", "[", 
+       RowBox[{
+       "probability0", ",", "probability1", ",", "probability2", ",", 
+        "probability3", ",", "probability4", ",", "probability5", ",", 
+        "probability6", ",", "probability7"}], "]"}], ";", 
+      StyleBox["\n", "Code"], 
+      RowBox[{
+       StyleBox[
+        RowBox[{
+         StyleBox["measuremente", "Code"], "rrorFidelityScattered"}]], "=", 
+       RowBox[{
+       "FindASetOfProbabilitiesAndFidelityMeasurement8probabilities1qubit", 
+        StyleBox["[", "Code"], 
+        StyleBox[
+         RowBox[{
+         "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+          ",", "BitFlipError8"}], "Code"], 
+        StyleBox["]", "Code"]}]}], 
+      StyleBox[";", "Code"], 
+      StyleBox["\n", "Code"], 
+      StyleBox["\n", "Code"], 
+      RowBox[{"Clear", "[", 
+       RowBox[{
+       "probability0", ",", "probability1", ",", "probability2", ",", 
+        "probability3", ",", "probability4", ",", "probability5", ",", 
+        "probability6", ",", "probability7", ",", "probabilityM0", ",", 
+        "probabilityM1", ",", "probabilityM2", ",", "probabilityM3", ",", 
+        "probabilityM4", ",", "probabilityM5", ",", "probabilityM6", ",", 
+        "probabilityM7"}], "]"}], ";", "\[IndentingNewLine]", 
+      StyleBox["\n", "Code"], 
+      RowBox[{"IMErrorFidelity", "=", 
+       RowBox[{
+       "FindASetOfProbabilitiesAndFidelityInputandMeasurement8probabilities1qu\
+bit", 
+        StyleBox["[", "Code"], 
+        RowBox[{
+         StyleBox["Pideal1qubit", "Code"], 
+         StyleBox[",", "Code"], 
+         StyleBox["Sideal1qubit", "Code"], 
+         StyleBox[",", "Code"], 
+         StyleBox["AI1qubit", "Code"], 
+         StyleBox[",", "Code"], 
+         StyleBox["Gate", "Code"], 
+         StyleBox[",", "Code"], 
+         StyleBox["BitFlipError8", "Code"], 
+         StyleBox[",", "Code"], "BitFlipErrorM8"}], 
+        StyleBox["]", "Code"]}]}], 
+      StyleBox[";", "Code"], 
+      StyleBox["\n", "Code"], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Clear", "[", 
+         RowBox[{
+         "probability0", ",", "probability1", ",", "probability2", ",", 
+          "probability3", ",", "probability4", ",", "probability5", ",", 
+          "probability6", ",", "probability7", ",", "probabilityM0", ",", 
+          "probabilityM1", ",", "probabilityM2", ",", "probabilityM3", ",", 
+          "probabilityM4", ",", "probabilityM5", ",", "probabilityM6", ",", 
+          "probabilityM7"}], "]"}], 
+        StyleBox["\n", "Code"], "IMErrorFidelity2"}], "=", 
+       RowBox[{
+       "FindASetOfProbabilitiesAndFidelityInputMeasurement2probabilities1qubit\
+", 
+        StyleBox["[", "Code"], 
+        StyleBox[
+         RowBox[{
+         "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+          ",", "BitFlipError"}], "Code"], 
+        StyleBox["]", "Code"]}]}], 
+      StyleBox[";", "Code"], 
+      StyleBox["\n", "Code"], 
+      StyleBox["\n", "Code"], 
+      RowBox[{"LogPlotResults5", "[", 
+       RowBox[{
+       "inputErrorFidelity", ",", "measurementErrorFidelity", ",", 
+        "inputErrorFidelityScattered", ",", 
+        StyleBox[
+         RowBox[{
+          StyleBox["measuremente", "Code"], "rrorFidelityScattered"}]], ",", 
+        "IMErrorFidelity", ",", " ", "3", ",", "2", ",", "2", ",", 
+        "\"\<Infidelity\>\"", ",", "title"}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LogPlots1qubit8probabilitiesBitFlipError2Complex", "[", 
+   RowBox[{"Gate_", ",", "title_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"IErrorFidelity", ",", 
+      StyleBox[
+       RowBox[{
+        StyleBox["M", "Code"], "ErrorFidelity"}]], ",", "IMErrorFidelity", 
+      ",", "ErroriFidelity2", ",", "ErrorFidelity2"}], "}"}], ",", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Clear", "[", 
+      RowBox[{
+      "probability0", ",", "probability1", ",", "probability2", ",", 
+       "probability3", ",", "probability4", ",", "probability5", ",", 
+       "probability6", ",", "probability7"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"inputErrorFidelity", "=", 
+      RowBox[{"FindASetOfProbabilitiesAndFidelityInput2probabilities1qubit", 
+       StyleBox["[", "Code"], 
+       StyleBox[
+        RowBox[{
+        "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+         ",", "BitFlipError"}], "Code"], 
+       StyleBox["]", "Code"]}]}], 
+     StyleBox[";", "Code"], 
+     StyleBox["\n", "Code"], 
+     StyleBox["\n", "Code"], 
+     RowBox[{"Clear", "[", 
+      RowBox[{
+      "probability0", ",", "probability1", ",", "probability2", ",", 
+       "probability3", ",", "probability4", ",", "probability5", ",", 
+       "probability6", ",", "probability7"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"inputErrorFidelityScattered", "=", 
+      RowBox[{"FindASetOfProbabilitiesAndFidelityInput8probabilities1qubit", 
+       StyleBox["[", "Code"], 
+       StyleBox[
+        RowBox[{
+        "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+         ",", "BitFlipError8"}], "Code"], 
+       StyleBox["]", "Code"]}]}], 
+     StyleBox[";", "Code"], 
+     StyleBox["\n", "Code"], 
+     StyleBox["\n", "Code"], 
+     RowBox[{"Clear", "[", 
+      RowBox[{
+      "probability0", ",", "probability1", ",", "probability2", ",", 
+       "probability3", ",", "probability4", ",", "probability5", ",", 
+       "probability6", ",", "probability7", ",", "probabilityM0", ",", 
+       "probabilityM1", ",", "probabilityM2", ",", "probabilityM3", ",", 
+       "probabilityM4", ",", "probabilityM5", ",", "probabilityM6", ",", 
+       "probabilityM7"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"measurementErrorFidelity", "=", 
+      RowBox[{
+      "FindASetOfProbabilitiesAndFidelityMeasurement2probabilities1qubit", 
+       StyleBox["[", "Code"], 
+       StyleBox[
+        RowBox[{
+        "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+         ",", "BitFlipError"}], "Code"], 
+       StyleBox["]", "Code"]}]}], 
+     StyleBox[";", "Code"], 
+     StyleBox["\n", "Code"], 
+     StyleBox["\n", "Code"], 
+     RowBox[{"Clear", "[", 
+      RowBox[{
+      "probability0", ",", "probability1", ",", "probability2", ",", 
+       "probability3", ",", "probability4", ",", "probability5", ",", 
+       "probability6", ",", "probability7"}], "]"}], ";", 
+     StyleBox["\n", "Code"], 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        StyleBox["measuremente", "Code"], "rrorFidelityScattered"}]], "=", 
+      RowBox[{
+      "FindASetOfProbabilitiesAndFidelityMeasurement8probabilities1qubit", 
+       StyleBox["[", "Code"], 
+       StyleBox[
+        RowBox[{
+        "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+         ",", "BitFlipError8"}], "Code"], 
+       StyleBox["]", "Code"]}]}], 
+     StyleBox[";", "Code"], 
+     StyleBox["\n", "Code"], 
+     StyleBox["\n", "Code"], 
+     RowBox[{"Clear", "[", 
+      RowBox[{
+      "probability0", ",", "probability1", ",", "probability2", ",", 
+       "probability3", ",", "probability4", ",", "probability5", ",", 
+       "probability6", ",", "probability7", ",", "probabilityM0", ",", 
+       "probabilityM1", ",", "probabilityM2", ",", "probabilityM3", ",", 
+       "probabilityM4", ",", "probabilityM5", ",", "probabilityM6", ",", 
+       "probabilityM7"}], "]"}], ";", "\[IndentingNewLine]", 
+     StyleBox["\n", "Code"], 
+     RowBox[{"IMErrorFidelity", "=", 
+      RowBox[{
+      "FindASetOfProbabilitiesAndFidelityInputandMeasurement8probabilities1qub\
+it", 
+       StyleBox["[", "Code"], 
+       RowBox[{
+        StyleBox["Pideal1qubit", "Code"], 
+        StyleBox[",", "Code"], 
+        StyleBox["Sideal1qubit", "Code"], 
+        StyleBox[",", "Code"], 
+        StyleBox["AI1qubit", "Code"], 
+        StyleBox[",", "Code"], 
+        StyleBox["Gate", "Code"], 
+        StyleBox[",", "Code"], 
+        StyleBox["BitFlipError8", "Code"], 
+        StyleBox[",", "Code"], "BitFlipErrorM8"}], 
+       StyleBox["]", "Code"]}]}], 
+     StyleBox[";", "Code"], 
+     StyleBox["\n", "Code"], 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Clear", "[", 
+        RowBox[{
+        "probability0", ",", "probability1", ",", "probability2", ",", 
+         "probability3", ",", "probability4", ",", "probability5", ",", 
+         "probability6", ",", "probability7", ",", "probabilityM0", ",", 
+         "probabilityM1", ",", "probabilityM2", ",", "probabilityM3", ",", 
+         "probabilityM4", ",", "probabilityM5", ",", "probabilityM6", ",", 
+         "probabilityM7"}], "]"}], 
+       StyleBox["\n", "Code"], "IMErrorFidelity2"}], "=", 
+      RowBox[{
+      "FindASetOfProbabilitiesAndFidelityInputMeasurement2probabilities1qubit"\
+, 
+       StyleBox["[", "Code"], 
+       StyleBox[
+        RowBox[{
+        "Pideal1qubit", ",", "Sideal1qubit", ",", "AI1qubit", ",", "Gate", 
+         ",", "BitFlipError"}], "Code"], 
+       StyleBox["]", "Code"]}]}], 
+     StyleBox[";", "Code"], 
+     StyleBox["\n", "Code"], 
+     StyleBox["\n", "Code"], 
+     RowBox[{"LogPlotResults5", "[", 
+      RowBox[{
+      "inputErrorFidelity", ",", "measurementErrorFidelity", ",", 
+       "inputErrorFidelityScattered", ",", 
+       StyleBox[
+        RowBox[{
+         StyleBox["measuremente", "Code"], "rrorFidelityScattered"}]], ",", 
+       "IMErrorFidelity2", ",", " ", "3", ",", "2", ",", "2", ",", 
+       "\"\<Infidelity\>\"", ",", "title"}], "]"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.8439545948662157`*^9, 3.8439545996247*^9}, {
+  3.8439546412063713`*^9, 3.8439546558445387`*^9}, {3.8439547107664948`*^9, 
+  3.843954731841587*^9}, {3.844448584797741*^9, 3.8444485851616898`*^9}, {
+  3.844448887623066*^9, 
+  3.84444889592564*^9}},ExpressionUUID->"37232a14-00fa-4b6c-8850-\
+e78d9f54abca"],
+
+Cell[BoxData[{
+ RowBox[{"LogPlots1qubit8probabilitiesBitFlipError2", "[", 
+  RowBox[{
+  "X", ",", "\"\<1-qubit X gate reconstruction with bit flip error\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"LogPlots1qubit8probabilitiesBitFlipError2", "[", 
+  RowBox[{
+  "Y", ",", "\"\<1-qubit Y gate reconstruction with bit flip error\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"LogPlots1qubit8probabilitiesBitFlipError2", "[", 
+  RowBox[{
+  "Z", ",", "\"\<1-qubit Z gate reconstruction with bit flip error\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"LogPlots1qubit8probabilitiesBitFlipError2Complex", "[", 
+  RowBox[{
+  "X", ",", "\"\<1-qubit X gate reconstruction with bit flip error\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"LogPlots1qubit8probabilitiesBitFlipError2Complex", "[", 
+  RowBox[{
+  "Y", ",", "\"\<1-qubit Y gate reconstruction with bit flip error\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"LogPlots1qubit8probabilitiesBitFlipError2Complex", "[", 
+  RowBox[{
+  "Z", ",", "\"\<1-qubit Z gate reconstruction with bit flip error\>\""}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.843954717528927*^9, 3.843954720838785*^9}, {
+  3.844448906390427*^9, 
+  3.844448909083951*^9}},ExpressionUUID->"0b684ee0-c136-4af6-add7-\
+43d3bac7faca"]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{492, Automatic}, {Automatic, 50}},
+FrontEndVersion->"12.3 for Mac OS X x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"55eb5f82-8050-406a-aadd-60bab091cb35"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 437, 12, 101, "Input",ExpressionUUID->"f5f91c25-a597-41a0-b0ac-6f9ad34779f1"],
+Cell[998, 34, 3699, 93, 241, "Input",ExpressionUUID->"8a4f68f1-db9f-4fe1-86ed-c89ea54e5e66"],
+Cell[4700, 129, 12815, 307, 1102, "Input",ExpressionUUID->"37232a14-00fa-4b6c-8850-e78d9f54abca"],
+Cell[17518, 438, 1277, 28, 136, "Input",ExpressionUUID->"0b684ee0-c136-4af6-add7-43d3bac7faca"]
+}
+]
+*)
+
